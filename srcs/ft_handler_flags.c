@@ -6,12 +6,13 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:45:49 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/14 14:18:47 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:52:20 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static void	ft_handler_flags_asterisk(const char *s, t_flags *flags_list, int *i)
+static void	ft_handler_flags_asterisk(const char *s, t_flags *flags_list,
+									int *i)
 {
 	(*i)++;
 	if (s[*i] == 'o')
@@ -26,27 +27,25 @@ static void	ft_handler_flags_asterisk(const char *s, t_flags *flags_list, int *i
 
 void	ft_handler_flags(const char *s, t_flags *flags_list, int *i)
 {
-	int		units;
-
-	units = 1;
-	if (!ft_isflag(s[*i]))
-		return ;
-	if (s[*i] == '-')
-		flags_list->dash = true;
-	else if (s[*i] == '0')
-		flags_list->zero = true;
-	else if (s[*i] == '+')
-		flags_list->plus = true;
-	else if (s[*i] == ' ')
-		flags_list->blank = true;
-	else if (s[*i] == '*')
-		flags_list->asterisk = true;
-	else if (s[*i] == '#')
-		ft_handler_flags_asterisk(s, flags_list, i);
-	while (ft_isdigit(s[*i]))
+	while (s[*i] && (ft_isflag(s[*i])|| ft_isdigit(s[*i])))
 	{
-		flags_list->padding_size += ft_isdigit(s[(*i)++]) * units;
-		units *= 10;
+		if (s[*i] == '-')
+			flags_list->dash = true;
+		else if (s[*i] == '0')
+			flags_list->zero = true;
+		else if (s[*i] == '+')
+			flags_list->plus = true;
+		else if (s[*i] == ' ')
+			flags_list->blank = true;
+		else if (s[*i] == '*')
+			flags_list->asterisk = true;
+		else if (s[*i] == '#')
+			ft_handler_flags_asterisk(s, flags_list, i);
+		if (ft_isdigit(s[*i]))
+			while (ft_isdigit(s[*i]))
+				flags_list->padding = (flags_list->padding * 10)  + s[(*i)++] - '0';
+		else
+			(*i)++;
 	}
 }
 

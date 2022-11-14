@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/14 14:06:51 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:10:41 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ enum { false, true };
 
 typedef struct s_flags
 {
-	char	type;
+	char	*str;
 	int		tw_chars;
 	t_bool	percent;
 
@@ -34,7 +34,7 @@ typedef struct s_flags
 	t_bool	plus;
 	t_bool	blank;
 	t_bool	asterisk;
-	int		padding_size;
+	int		padding;
 	t_bool	dot;
 	float	precision_value;
 	char	precision_type;
@@ -61,6 +61,10 @@ void	ft_handler_args(const char *s, va_list args, t_flags *flags_list,
 
 int		ft_parse_format(const char *s, va_list args, t_flags *flags_list);
 int		ft_putcharc(const char c, t_flags *flags_list);
-void	ft_putstrc(const char *s, t_flags *flags_list);
+void	ft_putstrc(const char *s, t_flags *flags_list, int *i);
+void	ft_put_padding(const char c, t_flags *flags_list);
+
+void	ft_convertor_d(int arg, t_flags *flags_list);
+void	ft_convertor_i(int arg, t_flags *flags_list);
 
 #endif

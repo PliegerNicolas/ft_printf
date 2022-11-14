@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 09:39:46 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/14 14:23:44 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/14 16:08:01 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,26 @@ LIBFT_DIR	:=	libft
 LIBFT		:=	$(LIBFT_DIR)/libft.a
 
 SRC_DIR		:=	srcs
-SRCS		:=	ft_printf.c ft_initialize_flags.c ft_next_flags.c \
-				ft_handler_percent.c ft_handler_args.c ft_handler_flags.c \
-				ft_istype.c ft_isflag.c ft_parse_format.c ft_putcharc.c \
-				ft_putstrc.c ../libft/ft_isdigit.c
+SRCS		:=	ft_printf.c \
+				ft_initialize_flags.c \
+				ft_next_flags.c \
+				ft_handler_percent.c \
+				ft_handler_args.c \
+				ft_handler_flags.c \
+				ft_istype.c \
+				ft_isflag.c \
+				ft_parse_format.c \
+				ft_putcharc.c \
+				ft_putstrc.c \
+				ft_put_padding.c \
+				../libft/ft_isdigit.c \
+				../libft/ft_strdup.c \
+				../libft/ft_itoa.c \
+				../libft/ft_strlen.c \
+				../libft/ft_strlcpy.c \
+				convertor_types/ft_convertor_d.c \
+				convertor_types/ft_convertor_i.c
+
 CC_SRCS		:=	$(addprefix $(SRC_DIR)/, $(SRCS))
 OBJS		:=	$(SRCS:%.c=$(SRC_DIR)/%.o)
 
