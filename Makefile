@@ -6,23 +6,26 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 09:39:46 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/12 18:39:46 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/14 14:23:44 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= libftprintf.a
 
-INCS_DIR	:=	./includes
-LIBFT_DIR	:=	./libft
+INCS_DIR	:=	includes
+LIBFT_DIR	:=	libft
 LIBFT		:=	$(LIBFT_DIR)/libft.a
 
-SRC_DIR		:=	./srcs
-SRCS		:=	ft_printf.c ft_initialize_flags.c ft_next_flags.c
+SRC_DIR		:=	srcs
+SRCS		:=	ft_printf.c ft_initialize_flags.c ft_next_flags.c \
+				ft_handler_percent.c ft_handler_args.c ft_handler_flags.c \
+				ft_istype.c ft_isflag.c ft_parse_format.c ft_putcharc.c \
+				ft_putstrc.c ../libft/ft_isdigit.c
 CC_SRCS		:=	$(addprefix $(SRC_DIR)/, $(SRCS))
 OBJS		:=	$(SRCS:%.c=$(SRC_DIR)/%.o)
 
 CC			:=	gcc
-CFLAGS		:=	-Wall -Wextra -Werror
+CFLAGS		:=	-Wall -Wextra -Werror -g
 RM			:=	/bin/rm -rf
 
 all: $(NAME)
