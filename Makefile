@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 09:39:46 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/14 16:08:01 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/15 10:25:56 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,13 @@ SRCS		:=	ft_printf.c \
 				../libft/ft_itoa.c \
 				../libft/ft_strlen.c \
 				../libft/ft_strlcpy.c \
+				convertor_flags/ft_convertor_dash.c \
+				convertor_flags/ft_convertor_zero.c \
+				convertor_flags/ft_convertor_asterisk.c \
+				convertor_flags/ft_convertor_digits.c \
+				convertor_flags/ft_convertor_plus.c \
+				convertor_flags/ft_convertor_blank.c \
+				convertor_flags/ft_convertor_hash.c \
 				convertor_types/ft_convertor_d.c \
 				convertor_types/ft_convertor_i.c
 

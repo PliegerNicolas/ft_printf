@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 17:32:18 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/14 17:56:54 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/15 10:07:40 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -31,8 +31,8 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	printf("CUST : %d\n", ft_printf("CUST : %%%%%10daaaa\n", 10));
+	printf("CUST : %d\n", ft_printf("CUST : %%%%%-*daaaa\n", 10, 10));
 	printf("\n");
-	printf("ORIG : %d\n", printf("ORIG : %%%%%10daaaa\n", 10));
+	printf("ORIG : %d\n", printf("ORIG : %%%%%-*daaaa\n", 10, 10));
 	return (0);
 }

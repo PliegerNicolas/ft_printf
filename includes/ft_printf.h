@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/14 17:10:41 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/15 10:25:11 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 
 # define TYPE_IDENTIFIERS "dioxXucsfeEgGpn"
-# define FLAG_IDENTIFIERS "-0+ #"
+# define FLAG_IDENTIFIERS "-0+ #*"
 
 typedef int	t_bool;
 enum { false, true };
@@ -55,7 +55,8 @@ int		ft_isflag(const char c);
 int		ft_istype(const char c);
 
 int		ft_handler_percent(const char *s, t_flags *flags_list, int *i);
-void	ft_handler_flags(const char *s, t_flags *flags_list, int *i);
+void	ft_handler_flags(const char *s, va_list args, t_flags *flags_list,
+			int *i);
 void	ft_handler_args(const char *s, va_list args, t_flags *flags_list,
 			int *i);
 
@@ -63,6 +64,15 @@ int		ft_parse_format(const char *s, va_list args, t_flags *flags_list);
 int		ft_putcharc(const char c, t_flags *flags_list);
 void	ft_putstrc(const char *s, t_flags *flags_list, int *i);
 void	ft_put_padding(const char c, t_flags *flags_list);
+
+void	ft_convertor_dash(const char *s, t_flags *flags_list, int *i);
+void	ft_convertor_zero(const char *s, t_flags *flags_list, int *i);
+void	ft_convertor_asterisk(const char *s, va_list args,
+			t_flags *flags_list, int *i);
+void	ft_convertor_digits(const char *s, t_flags *flags_list, int *i);
+void	ft_convertor_plus(const char *s, t_flags *flags_list, int *i);
+void	ft_convertor_blank(const char *s, t_flags *flags_list, int *i);
+void	ft_convertor_hash(const char *s, t_flags *flags_list, int *i);
 
 void	ft_convertor_d(int arg, t_flags *flags_list);
 void	ft_convertor_i(int arg, t_flags *flags_list);
