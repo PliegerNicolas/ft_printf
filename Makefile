@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:17:44 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/15 17:33:43 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/15 17:35:53 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,6 @@ test: re
 	@$(CC) $(CFLAGS) $(CC_SRCSC) $(CC_LIBFT_SRCSC) -L . -I $(INCS_DIR) -o $(EXECUTABLE_NAME)
 	@echo "\n\033[92mExecution of program.\033[0m"
 	@echo "\033[92m------------------\033[0m\n"	
-	$(EXECUTABLE_NAME)
+	$(EXECUTABLE_NAME) | cat -e
 
 .PHONY: all clean fclean re bonus test
