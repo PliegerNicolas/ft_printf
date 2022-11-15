@@ -1,17 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convertor_d.c                                   :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 15:22:11 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/14 15:22:24 by nplieger         ###   ########.fr       */
+/*   Created: 2022/11/15 12:48:00 by nplieger          #+#    #+#             */
+/*   Updated: 2022/11/15 12:48:27 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_convertor_d(int arg, t_flags *flags_list)
+char	*ft_strrev(char *str)
 {
-	flags_list->str = ft_strdup(ft_itoa(arg));
+	int		size;
+	int		i;
+	char	tmp;
+
+	size = ft_strlen(str);
+	size--;
+	i = 0;
+	while (i < size)
+	{
+		tmp = str[i];
+		str[i] = str[size];
+		str[size] = tmp;
+		i++;
+		size--;
+	}
+	return (str);
 }

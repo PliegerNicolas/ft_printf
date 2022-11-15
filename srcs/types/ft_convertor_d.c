@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_padding.c                                   :+:      :+:    :+:   */
+/*   ft_convertor_d.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 16:08:31 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/14 17:47:13 by nplieger         ###   ########.fr       */
+/*   Created: 2022/11/14 15:22:11 by nplieger          #+#    #+#             */
+/*   Updated: 2022/11/15 16:10:55 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_put_padding(const char c, t_flags *flags_list)
+void	ft_convertor_d(const char *s, t_flags *flags_list, int *i, va_list args)
 {
-	while (flags_list->padding > 0)
-	{
-		ft_putcharc(c, flags_list);
-		flags_list->padding--;
-	}
+	if (s[*i] == 'd')
+		flags_list->str = ft_itoa(va_arg(args, int));
 }

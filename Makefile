@@ -5,74 +5,95 @@
 #                                                     +:+ +:+         +:+      #
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/12 09:39:46 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/15 10:25:56 by nplieger         ###   ########.fr        #
+#    Created: 2022/11/15 16:17:44 by nplieger          #+#    #+#              #
+#    Updated: 2022/11/15 17:33:43 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= libftprintf.a
+NAME			:=	libftprintf.a
+EXECUTABLE_NAME	:=	./ft_printf
 
-INCS_DIR	:=	includes
-LIBFT_DIR	:=	libft
-LIBFT		:=	$(LIBFT_DIR)/libft.a
+INCS_DIR		:=	includes
+LIBFT_DIR		:=	libft
+OBJ_DIR			:=	objs
+SRC_DIR			:=	srcs
+LIBFT		= $(LIBFT_DIR)/libft.a
 
-SRC_DIR		:=	srcs
-SRCS		:=	ft_printf.c \
-				ft_initialize_flags.c \
-				ft_next_flags.c \
-				ft_handler_percent.c \
-				ft_handler_args.c \
-				ft_handler_flags.c \
-				ft_istype.c \
-				ft_isflag.c \
-				ft_parse_format.c \
-				ft_putcharc.c \
-				ft_putstrc.c \
-				ft_put_padding.c \
-				../libft/ft_isdigit.c \
-				../libft/ft_strdup.c \
-				../libft/ft_itoa.c \
-				../libft/ft_strlen.c \
-				../libft/ft_strlcpy.c \
-				convertor_flags/ft_convertor_dash.c \
-				convertor_flags/ft_convertor_zero.c \
-				convertor_flags/ft_convertor_asterisk.c \
-				convertor_flags/ft_convertor_digits.c \
-				convertor_flags/ft_convertor_plus.c \
-				convertor_flags/ft_convertor_blank.c \
-				convertor_flags/ft_convertor_hash.c \
-				convertor_types/ft_convertor_d.c \
-				convertor_types/ft_convertor_i.c
+SRCS			:=	ft_printf \
+					ft_parse_format \
+					t_flags/ft_initialize_flags \
+					t_flags/ft_next_flags \
+					handlers/ft_handler_args \
+					handlers/ft_handler_flags \
+					handlers/ft_handler_percent \
+					put_methods/ft_strrev \
+					put_methods/ft_itoa_base \
+					put_methods/ft_putcharc \
+					put_methods/ft_putpadding \
+					put_methods/ft_putstrc \
+					flags/ft_isflag \
+					flags/ft_convertor_asterisk \
+					flags/ft_convertor_blank \
+					flags/ft_convertor_dash \
+					flags/ft_convertor_digits \
+					flags/ft_convertor_hash \
+					flags/ft_convertor_plus \
+					flags/ft_convertor_zero \
+					types/ft_istype \
+					types/ft_convertor_d \
+					types/ft_convertor_i \
+					types/ft_convertor_o
 
-CC_SRCS		:=	$(addprefix $(SRC_DIR)/, $(SRCS))
-OBJS		:=	$(SRCS:%.c=$(SRC_DIR)/%.o)
+LIBFT_SRCS		:=	ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii \
+					ft_isdigit ft_isprint ft_itoa ft_memchr ft_memcmp ft_memcpy \
+					ft_memmove ft_memset ft_putchar_fd ft_putendl_fd ft_putnbr_fd \
+					ft_putstr_fd ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
+					ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp ft_strnstr \
+					ft_strrchr ft_strtrim ft_substr ft_tolower ft_toupper ft_lstnew \
+					ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone \
+					ft_lstclear ft_lstiter ft_lstmap
 
-CC			:=	gcc
-CFLAGS		:=	-Wall -Wextra -Werror -g
-RM			:=	/bin/rm -rf
+LIBFT_SRCSC		:=	$(addsuffix .c, $(LIBFT_SRCS))
+CC_LIBFT_SRCSC	:=	$(addprefix $(LIBFT_DIR)/, $(LIBFT_SRCSC))
+SRCSC			:=	$(addsuffix .c, $(SRCS))
+CC_SRCSC		:=	$(addprefix $(SRC_DIR)/, $(SRCSC))
+OBJS			:=	$(SRCSC:%.c=$(OBJ_DIR)/%.o)
+
+CC				:=	gcc
+AR				:=	ar -rcs
+CFLAGS			:=	-Wall -Wextra -Werror
+RM				:=	/bin/rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -I $(INCS_DIR) -I $(LIBFT_DIR) $(CC_SRCS)
-	ar rcs $(NAME) $<
+$(NAME):	$(OBJS) $(LIBFT)
+	$(AR) $(NAME) $(OBJS)
 
-$(OBJS): $(SRC_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJS):	$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -I $(INCS_DIR) -I $(LIBFT_DIR) -c $< -o $@
 
 $(LIBFT):
-	make bonus -C $(LIBFT_DIR)
+	@make -C $(LIBFT_DIR)
 	cp $(LIBFT) $(NAME)
 
-clean:
-	make clean -C $(LIBFT_DIR)
-	$(RM) $(OBJS)
-	$(RM) ./a.out
+bonus:	all
 
-fclean: clean
+clean:
 	make fclean -C $(LIBFT_DIR)
+	find . -type f -name '*.o' -delete
+	$(RM) -r $(OBJ_DIR)
+
+fclean:	clean
 	$(RM) $(NAME)
+	$(RM) $(EXECUTABLE_NAME)
 
 re: fclean all
-	
-.PHONY: all clean fclean re
+
+test: re
+	@$(CC) $(CFLAGS) $(CC_SRCSC) $(CC_LIBFT_SRCSC) -L . -I $(INCS_DIR) -o $(EXECUTABLE_NAME)
+	@echo "\n\033[92mExecution of program.\033[0m"
+	@echo "\033[92m------------------\033[0m\n"	
+	$(EXECUTABLE_NAME)
+
+.PHONY: all clean fclean re bonus test

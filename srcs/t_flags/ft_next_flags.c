@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_initialize_flags.c                              :+:      :+:    :+:   */
+/*   ft_next_flags.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 17:36:46 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/14 17:10:53 by nplieger         ###   ########.fr       */
+/*   Created: 2022/11/12 18:05:50 by nplieger          #+#    #+#             */
+/*   Updated: 2022/11/15 15:42:00 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-t_flags	*ft_initialize_flags(void)
+void	ft_next_flags(t_flags *flags)
 {
-	t_flags		*flags;
-
-	flags = malloc(sizeof(t_flags));
-	if (!flags)
-		return (NULL);
+	if (flags->str)
+		free(flags->str);
 	flags->str = '\0';
-	flags->tw_chars = 0;
 	flags->percent = false;
 	flags->dash = false;
 	flags->zero = false;
@@ -34,5 +30,4 @@ t_flags	*ft_initialize_flags(void)
 	flags->hex = false;
 	flags->decimal_point = false;
 	flags->decimal_point_zeros = false;
-	return (flags);
 }
