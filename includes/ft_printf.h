@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/15 16:57:37 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/16 10:59:40 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,9 @@ typedef struct s_flags
 	t_bool	plus;
 	t_bool	blank;
 	t_bool	asterisk;
-	int		padding;
+	float	padding;
 	t_bool	dot;
-	float	precision_value;
-	char	precision_type;
-
 	t_bool	hash;
-	t_bool	octal;
-	t_bool	hex;
-	t_bool	decimal_point;
-	t_bool	decimal_point_zeros;
 }	t_flags;
 
 int		ft_printf(const char *format, ...);

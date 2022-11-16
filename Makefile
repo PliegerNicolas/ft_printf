@@ -6,12 +6,12 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:17:44 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/15 17:35:53 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/16 11:01:10 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			:=	libftprintf.a
-EXECUTABLE_NAME	:=	./ft_printf
+EXECUTABLE_NAME	:=	./a.out
 
 INCS_DIR		:=	includes
 LIBFT_DIR		:=	libft
@@ -61,7 +61,8 @@ OBJS			:=	$(SRCSC:%.c=$(OBJ_DIR)/%.o)
 
 CC				:=	gcc
 AR				:=	ar -rcs
-CFLAGS			:=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS_DEBUG	+= -g
 RM				:=	/bin/rm -f
 
 all: $(NAME)
@@ -91,7 +92,7 @@ fclean:	clean
 re: fclean all
 
 test: re
-	@$(CC) $(CFLAGS) $(CC_SRCSC) $(CC_LIBFT_SRCSC) -L . -I $(INCS_DIR) -o $(EXECUTABLE_NAME)
+	@$(CC) $(CFLAGS_DEBUG) $(CC_SRCSC) $(CC_LIBFT_SRCSC) -L . -I $(INCS_DIR) -o $(EXECUTABLE_NAME)
 	@echo "\n\033[92mExecution of program.\033[0m"
 	@echo "\033[92m------------------\033[0m\n"	
 	$(EXECUTABLE_NAME) | cat -e

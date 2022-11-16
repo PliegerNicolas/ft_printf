@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 18:05:50 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/15 15:42:00 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/16 11:00:16 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -23,11 +23,5 @@ void	ft_next_flags(t_flags *flags)
 	flags->asterisk = false;
 	flags->padding = 0;
 	flags->dot = false;
-	flags->precision_value = 0;
-	flags->precision_type = '\0';
 	flags->hash = false;
-	flags->octal = false;
-	flags->hex = false;
-	flags->decimal_point = false;
-	flags->decimal_point_zeros = false;
 }
