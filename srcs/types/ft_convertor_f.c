@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convertor_c.c                                   :+:      :+:    :+:   */
+/*   ft_convertor_f.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 17:30:03 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/16 18:01:54 by nplieger         ###   ########.fr       */
+/*   Created: 2022/11/16 17:56:25 by nplieger          #+#    #+#             */
+/*   Updated: 2022/11/16 18:00:58 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_convertor_c(const char *s, t_flags *flags_list, int *i, va_list args)
+void	ft_convertor_f(const char *s, t_flags *flags_list, int *i, va_list args)
 {
-	char	*str;
-
-	if (s[*i] == 'c')
-	{
-		str = malloc (2 * sizeof(char));
-		str[0] = va_arg(args, int);
-		str[1] = '\0';
-		flags_list->str = str;
-	}
+	if (s[*i] == 'f')
+		flags_list->str = ft_ltoa_base(va_arg(args, double), "0123456789");
+	// Changer le convertisseur.
 }

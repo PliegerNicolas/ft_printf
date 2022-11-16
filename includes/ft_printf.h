@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/16 17:46:56 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/16 17:58:22 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void	ft_convertor_u(const char *s, t_flags *flags_list, int *i,
 void	ft_convertor_c(const char *s, t_flags *flags_list, int *i,
 			va_list args);
 void	ft_convertor_s(const char *s, t_flags *flags_list, int *i,
+			va_list args);
+void	ft_convertor_f(const char *s, t_flags *flags_list, int *i,
 			va_list args);
 
 #endif
