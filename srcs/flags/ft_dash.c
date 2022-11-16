@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convertor_hash.c                                :+:      :+:    :+:   */
+/*   ft_dash.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 10:21:20 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/16 11:01:43 by nplieger         ###   ########.fr       */
+/*   Created: 2022/11/15 09:53:10 by nplieger          #+#    #+#             */
+/*   Updated: 2022/11/16 13:38:24 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_convertor_hash(const char *s, t_flags *flags_list, int *i)
+void	ft_dash_setter(const char *s, t_flags *flags_list, int *i)
 {
-	if (s[*i] == '#')
+	if (s[*i] == '-')
 	{
-		flags_list->hash = true;
+		flags_list->dash = true;
+		(*i)++;
+	}
+}
+
+void	ft_dash_convertor(const char *s, t_flags *flags_list, int *i)
+{
+	if (s[*i] == '-')
+	{
+		flags_list->dash = true;
 		(*i)++;
 	}
 }

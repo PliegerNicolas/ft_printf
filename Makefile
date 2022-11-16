@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:17:44 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/16 11:01:10 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/16 16:35:46 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INCS_DIR		:=	includes
 LIBFT_DIR		:=	libft
 OBJ_DIR			:=	objs
 SRC_DIR			:=	srcs
-LIBFT		= $(LIBFT_DIR)/libft.a
+LIBFT			:= $(LIBFT_DIR)/libft.a
 
 SRCS			:=	ft_printf \
 					ft_parse_format \
@@ -32,13 +32,13 @@ SRCS			:=	ft_printf \
 					put_methods/ft_putpadding \
 					put_methods/ft_putstrc \
 					flags/ft_isflag \
-					flags/ft_convertor_asterisk \
-					flags/ft_convertor_blank \
-					flags/ft_convertor_dash \
-					flags/ft_convertor_digits \
-					flags/ft_convertor_hash \
-					flags/ft_convertor_plus \
-					flags/ft_convertor_zero \
+					flags/ft_asterisk \
+					flags/ft_blank \
+					flags/ft_dash \
+					flags/ft_digits \
+					flags/ft_hash \
+					flags/ft_plus \
+					flags/ft_zero \
 					types/ft_istype \
 					types/ft_convertor_d \
 					types/ft_convertor_i \
@@ -62,7 +62,7 @@ OBJS			:=	$(SRCSC:%.c=$(OBJ_DIR)/%.o)
 CC				:=	gcc
 AR				:=	ar -rcs
 CFLAGS			=	-Wall -Wextra -Werror
-CFLAGS_DEBUG	+= -g
+CFLAGS_DEBUG	+= -g3
 RM				:=	/bin/rm -f
 
 all: $(NAME)
@@ -71,11 +71,11 @@ $(NAME):	$(OBJS) $(LIBFT)
 	$(AR) $(NAME) $(OBJS)
 
 $(OBJS):	$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(@D)
+	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -I $(INCS_DIR) -I $(LIBFT_DIR) -c $< -o $@
 
 $(LIBFT):
-	@make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR)
 	cp $(LIBFT) $(NAME)
 
 bonus:	all
@@ -91,10 +91,7 @@ fclean:	clean
 
 re: fclean all
 
-test: re
+test:
 	@$(CC) $(CFLAGS_DEBUG) $(CC_SRCSC) $(CC_LIBFT_SRCSC) -L . -I $(INCS_DIR) -o $(EXECUTABLE_NAME)
-	@echo "\n\033[92mExecution of program.\033[0m"
-	@echo "\033[92m------------------\033[0m\n"	
-	$(EXECUTABLE_NAME) | cat -e
 
 .PHONY: all clean fclean re bonus test
