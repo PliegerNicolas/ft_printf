@@ -6,12 +6,13 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:57:04 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/16 16:27:17 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/16 17:11:05 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static void	*ft_memcpy_padded(void *dest, const void *src, size_t start, size_t n)
+static void	*ft_memcpy_padded(void *dest, const void *src, size_t start,
+						size_t n)
 {
 	size_t	i;
 
@@ -42,7 +43,6 @@ void	*ft_realloc(void *ptr, size_t size)
 	free(ptr);
 	return (new_ptr);
 }
-
 
 void	*ft_realloc_mempadded(void *ptr, size_t size)
 {

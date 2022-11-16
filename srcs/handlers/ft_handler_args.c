@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:27:23 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/15 11:12:05 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/16 17:22:47 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -38,11 +38,8 @@ void	ft_handler_args(const char *s, va_list args, t_flags *flags_list,
 	ft_convertor_d(s, flags_list, i, args);
 	ft_convertor_i(s, flags_list, i, args);
 	ft_convertor_o(s, flags_list, i, args);
-	if (s[*i] == 'x')
-		va_arg(args, int);
-	else if (s[*i] == 'X')
-		va_arg(args, int);
-	else if (s[*i] == 'u')
+	ft_convertor_x(s, flags_list, i, args);
+	if (s[*i] == 'u')
 		va_arg(args, unsigned int);
 	else if (s[*i] == 'c')
 		va_arg(args, int);

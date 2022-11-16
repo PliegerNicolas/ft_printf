@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 17:32:18 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/15 12:14:23 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/16 17:25:02 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -31,8 +31,14 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	printf("CUST : %d\n", ft_printf("CUST : %%%%%-*d%oaaaa\n", 10, 10, -2));
+	void	*p;
+
+	p = malloc(0);
+	printf("CUST : %d\n", ft_printf("%d%i%x%X%u%c%s%f%e%E%g%G%p%%\n", 11, 12, 13,
+			14, 15, 'c', "string", 10.1, 10.2, 10.3, 10.4, 10.5, p));
 	printf("\n");
-	printf("ORIG : %d\n", printf("ORIG : %%%%%-*d%oaaaa\n", 10, 10, -2));
+	printf("CUST : %d\n", printf("%d%i%x%X%u%c%s%f%e%E%g%G%p%%\n", 11, 12, 13,
+			14, 15, 'c', "string", 10.1, 10.2, 10.3, 10.4, 10.5, p));
+	free(p);
 	return (0);
 }

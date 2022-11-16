@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:17:44 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/16 16:35:46 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/16 17:07:32 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ SRCS			:=	ft_printf \
 					types/ft_istype \
 					types/ft_convertor_d \
 					types/ft_convertor_i \
-					types/ft_convertor_o
+					types/ft_convertor_o \
+					types/ft_convertor_x
 
 LIBFT_SRCS		:=	ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii \
 					ft_isdigit ft_isprint ft_itoa ft_memchr ft_memcmp ft_memcpy \

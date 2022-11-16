@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/16 16:34:25 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/16 17:20:00 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,10 @@ void	ft_dash_setter(const char *s, t_flags *flags_list, int *i);
 void	ft_dash_convertor(const char *s, t_flags *flags_list, int *i);
 void	ft_zero_setter(const char *s, t_flags *flags_list, int *i);
 void	ft_zero_convertor(const char *s, t_flags *flags_list, int *i);
-void	ft_asterisk_setter(const char *s, va_list args, t_flags *flags_list, int *i);
-void	ft_asterisk_convertor(const char *s, va_list args, t_flags *flags_list, int *i);
+void	ft_asterisk_setter(const char *s, va_list args, t_flags *flags_lisit,
+			int *i);
+void	ft_asterisk_convertor(const char *s, va_list args, t_flags *flags_list,
+			int *i);
 void	ft_digits_setter(const char *s, t_flags *flags_list, int *i);
 void	ft_digits_convertor(const char *s, t_flags *flags_list, int *i);
 void	ft_plus_setter(const char *s, t_flags *flags_list, int *i);
@@ -83,6 +85,10 @@ void	ft_convertor_d(const char *s, t_flags *flags_list, int *i,
 void	ft_convertor_i(const char *s, t_flags *flags_list, int *i,
 			va_list args);
 void	ft_convertor_o(const char *s, t_flags *flags_list, int *i,
+			va_list args);
+void	ft_convertor_x(const char *s, t_flags *flags_list, int *i,
+			va_list args);
+void	ft_convertor_X(const char *s, t_flags *flags_list, int *i,
 			va_list args);
 
 #endif
