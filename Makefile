@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:17:44 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/16 17:58:36 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/17 15:15:00 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,13 @@ SRCS			:=	ft_printf \
 					handlers/ft_handler_args \
 					handlers/ft_handler_flags \
 					handlers/ft_handler_percent \
-					put_methods/ft_strrev \
-					put_methods/ft_itoa_base \
-					put_methods/ft_putcharc \
-					put_methods/ft_putpadding \
-					put_methods/ft_putstrc \
+					utils/ft_strrev \
+					utils/ft_power \
+					utils/ft_dtoa \
+					utils/ft_itoa_base \
+					utils/ft_putcharc \
+					utils/ft_putpadding \
+					utils/ft_putstrc \
 					flags/ft_isflag \
 					flags/ft_asterisk \
 					flags/ft_blank \
@@ -97,6 +99,6 @@ fclean:	clean
 re: fclean all
 
 test:
-	@$(CC) $(CFLAGS_DEBUG) $(CC_SRCSC) $(CC_LIBFT_SRCSC) -L . -I $(INCS_DIR) -o $(EXECUTABLE_NAME)
+	$(CC) $(CFLAGS_DEBUG) $(CC_SRCSC) $(CC_LIBFT_SRCSC) -L . -I $(INCS_DIR) -o $(EXECUTABLE_NAME)
 
 .PHONY: all clean fclean re bonus test

@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/16 17:58:22 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/17 15:14:24 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_flags
 	t_bool	asterisk;
 	float	padding;
 	t_bool	dot;
+	int		precision;
 	t_bool	hash;
 }	t_flags;
 
@@ -60,8 +61,10 @@ int		ft_putcharc(const char c, t_flags *flags_list);
 void	ft_putstrc(const char *s, t_flags *flags_list, int *i);
 void	ft_putpadding(const char c, t_flags *flags_list);
 char	*ft_strrev(char *str);
+int		ft_power(int nb, int power);
 char	*ft_itoa_base(int nb, const char *base);
 char	*ft_ltoa_base(unsigned long nb, const char *base);
+char	*ft_dtoa(const double nb, const size_t precision);
 
 void	ft_dash_setter(const char *s, t_flags *flags_list, int *i);
 void	ft_dash_convertor(const char *s, t_flags *flags_list, int *i);

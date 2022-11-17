@@ -6,11 +6,12 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 17:32:18 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/16 17:25:02 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:52:30 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 #include <stdio.h>
+#include <time.h>
 
 int	ft_printf(const char *format, ...)
 {
@@ -32,13 +33,19 @@ int	ft_printf(const char *format, ...)
 int	main(void)
 {
 	void	*p;
+	int		start;
+	int		end;
 
 	p = malloc(0);
-	printf("CUST : %d\n", ft_printf("%d%i%x%X%u%c%s%f%e%E%g%G%p%%\n", 11, 12, 13,
-			14, 15, 'c', "string", 10.1, 10.2, 10.3, 10.4, 10.5, p));
+	start = clock();
+	printf("CUST : %d\n", ft_printf("{d : %d},{i : %i},{x : %x},{X : %X},{u : %u},{c : %c},{s : %s}, {f : %f},{e : %e},{E : %E},{g : %g},{G : %G},{p : %p}, %%\n", 11, 12, 13, 14, 15, 'c', "string", -10.1, 10.2, 10.3, 10.4, 10.5, p));
+	end = clock();
+	printf("time : %f\n", ((float)(end - start) / CLOCKS_PER_SEC));
 	printf("\n");
-	printf("CUST : %d\n", printf("%d%i%x%X%u%c%s%f%e%E%g%G%p%%\n", 11, 12, 13,
-			14, 15, 'c', "string", 10.1, 10.2, 10.3, 10.4, 10.5, p));
+	start = clock();
+	printf("CUST : %d\n", printf("{d : %d},{i : %i},{x : %x},{X : %X},{u : %u},{c : %c},{s : %s}, {f : %f},{e : %e},{E : %E},{g : %g},{G : %G},{p : %p}, %%\n", 11, 12, 13, 14, 15, 'c', "string", -10.1, 10.2, 10.3, 10.4, 10.5, p));
+	end = clock();
+	printf("time : %f\n", ((float)(end - start) / CLOCKS_PER_SEC));
 	free(p);
 	return (0);
 }
