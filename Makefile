@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:17:44 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/17 15:15:00 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/17 17:13:54 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS			:=	ft_printf \
 					handlers/ft_handler_percent \
 					utils/ft_strrev \
 					utils/ft_power \
+					utils/ft_charcount \
 					utils/ft_dtoa \
 					utils/ft_itoa_base \
 					utils/ft_putcharc \
