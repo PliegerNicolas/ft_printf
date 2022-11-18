@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/18 14:05:52 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:26:29 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ void			ft_putstrc(const char *s, t_flags *flags_list, int *i);
 void			ft_putpadding(const char c, t_flags *flags_list);
 char			*ft_strrev(char *str);
 long long int	ft_power(long long int nb, int power);
+int				ft_ispositivezero(double nb);
+int				ft_isnegativezero(double nb);
+size_t			ft_precision_charcount(const double nb, const size_t precision);
 char			*ft_itoa_base(int nb, const char *base);
 char			*ft_ltoa_base(unsigned long nb, const char *base);
 char			*ft_llitoa(long long int n);
