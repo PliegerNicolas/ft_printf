@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:21:45 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/17 18:12:58 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/18 10:44:44 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -77,7 +77,7 @@ char	*ft_sntoa(double nb, const size_t precision, const t_bool caps)
 		return (NULL);
 	return (nb_str);
 }
-
+/*
 int	main(void)
 {
 	double	nb;
@@ -90,3 +90,4 @@ int	main(void)
 	printf("%s\n", ft_sntoa(nb, precision, false));
 	return (0);
 }
+*/

@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:17:44 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/17 17:13:54 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/18 10:46:03 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ SRCS			:=	ft_printf \
 					utils/ft_power \
 					utils/ft_charcount \
 					utils/ft_dtoa \
+					utils/ft_llitoa \
 					utils/ft_itoa_base \
+					utils/ft_sntoa \
 					utils/ft_putcharc \
 					utils/ft_putpadding \
 					utils/ft_putstrc \
