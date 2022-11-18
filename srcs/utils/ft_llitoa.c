@@ -6,11 +6,27 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 10:13:27 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/18 10:15:18 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/18 14:07:46 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-#include <stdio.h>
+
+static size_t	ft_charcount(long long int nb)
+{
+	size_t	char_count;
+
+	char_count = 0;
+	if (nb < 0)
+		char_count++;
+	if (nb == 0)
+		return (++char_count);
+	while (nb >= 1 || nb < 0)
+	{
+		nb /= 10;
+		char_count++;
+	}
+	return (char_count);
+}
 
 char	*ft_llitoa(long long int n)
 {

@@ -6,12 +6,12 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:21:45 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/18 10:44:44 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/18 14:06:12 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 #include <stdio.h>
-
+/*
 static void	ft_push_comma(double *nb, int *comma_placement)
 {
 	// A corriger et continuer les fonctions de ce fichier.
@@ -77,7 +77,7 @@ char	*ft_sntoa(double nb, const size_t precision, const t_bool caps)
 		return (NULL);
 	return (nb_str);
 }
-/*
+
 int	main(void)
 {
 	double	nb;
