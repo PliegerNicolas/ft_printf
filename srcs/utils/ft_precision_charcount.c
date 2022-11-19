@@ -24,14 +24,14 @@ size_t	ft_precision_charcount(const double nb, const size_t precision)
 	}
 	else
 		n = nb;
+  if (precision > 0)
+    char_count++;
 	if (n < 1)
-		return (++char_count + precision + 1);
+		return (char_count + precision + 1);
 	while (n >= 1)
 	{
 		n /= 10;
 		char_count++;
 	}
-	if (precision > 0)
-		char_count++;
 	return (char_count + precision);
 }

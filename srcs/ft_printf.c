@@ -1,5 +1,4 @@
 /* ************************************************************************** */
-
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
@@ -40,13 +39,13 @@ int	main(void)
 	p = malloc(0);
 	start = clock();
 	printf("CUST : %d\n", ft_printf("{d : %d},{i : %i},{x : %x},{X : %X},{u : %u}, {c : %c},{s : %s}, {f : %f},{e : %e},{E : %E},{g : %g},{G : %G},{p : %p}, %%\n",
-			11, 12, 13, 14, 15, 'c', "string", -0., 10.2, 10.3, 10.4, 10.5, p));
+			11, 12, 13, 14, 15, 'c', "string", -123456789123.12345678910, 10.2, 10.3, 10.4, 10.5, p));
 	end = clock();
 	printf("time : %f\n", ((float)(end - start) / CLOCKS_PER_SEC));
 	printf("\n");
 	start = clock();
 	printf("CUST : %d\n", printf("{d : %d},{i : %i},{x : %x},{X : %X},{u : %u}, {c : %c},{s : %s}, {f : %f},{e : %e},{E : %E},{g : %g},{G : %G},{p : %p},%%\n",
-			11, 12, 13, 14, 15, 'c', "string", -0., 10.2, 10.3, 10.4, 10.5, p));
+			11, 12, 13, 14, 15, 'c', "string", -123456789123.12345678910, 10.2, 10.3, 10.4, 10.5, p));
 	end = clock();
 	printf("time : %f\n", ((float)(end - start) / CLOCKS_PER_SEC));
 	free(p);
