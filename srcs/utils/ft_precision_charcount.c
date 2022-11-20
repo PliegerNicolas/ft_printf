@@ -1,37 +1,26 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_precision_charcount.c                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 15:15:04 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/18 17:52:28 by nplieger         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 #include "ft_printf.h"
 
 size_t	ft_precision_charcount(const double nb, const size_t precision)
 {
-	size_t			char_count;
-	long double		n;
+	size_t		char_count;
+	double		nb_cpy;
 
 	char_count = 0;
+	if (precision)
+		char_count += precision + 1;
 	if (nb < 0 || ft_isnegativezero(nb))
 	{
 		char_count++;
-		n = -nb;
+		nb_cpy = -nb;
 	}
 	else
-		n = nb;
-  if (precision > 0)
-    char_count++;
-	if (n < 1)
-		return (char_count + precision + 1);
-	while (n >= 1)
+		nb_cpy = nb;
+	if ((long long int)nb_cpy == 0)
+		return (++char_count);
+	while (nb_cpy >= 1)
 	{
-		n /= 10;
+		nb_cpy /= 10.0;
 		char_count++;
 	}
-	return (char_count + precision);
+	return (char_count);
 }

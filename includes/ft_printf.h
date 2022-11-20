@@ -64,6 +64,7 @@ void			ft_putstrc(const char *s, t_flags *flags_list, int *i);
 void			ft_putpadding(const char c, t_flags *flags_list);
 char			*ft_strrev(char *str);
 long long int	ft_power(long long int nb, int power);
+double			ft_dmod(double x, int y);
 int				ft_ispositivezero(double nb);
 int				ft_isnegativezero(double nb);
 size_t			ft_precision_charcount(const double nb, const size_t precision);

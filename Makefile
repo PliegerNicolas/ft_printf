@@ -28,6 +28,7 @@ SRCS			:=	ft_printf \
 					handlers/ft_handler_percent \
 					utils/ft_strrev \
 					utils/ft_power \
+					utils/ft_dmod \
 					utils/ft_issignedzero \
 					utils/ft_precision_charcount \
 					utils/ft_dtoa \
