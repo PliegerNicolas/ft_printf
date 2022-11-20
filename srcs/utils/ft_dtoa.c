@@ -11,9 +11,34 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static void	ft_precision_printer()
+static double	ft_precision_printer(char *ret, const double nb, size_t *precision,
+							size_t *char_count)
 {
-	
+	double		nb_cpy;
+
+	if (nb < 0 || ft_isnegativezero(nb))
+		nb_cpy = -nb;
+	else
+		nb_cpy = nb;
+	nb_cpy *= ft_power(10, (*precision) + 1);
+	if (ft_dmod(nb_cpy, 10) >= 5)
+	{
+		nb_cpy /= 10;
+		nb_cpy++;
+	}
+	else
+		nb_cpy /= 10;
+	if (*precision)
+	{
+		while (*precision)
+		{
+			ret[(*char_count)--] = ft_dmod(nb_cpy, 10) + '0';
+			nb_cpy /= 10.0;
+			(*precision)--;
+		}
+		ret[(*char_count)--] = '.';
+	}
+	return (nb_cpy);
 }
 
 char	*ft_dtoa(const double nb, size_t precision)
@@ -25,28 +50,7 @@ char	*ft_dtoa(const double nb, size_t precision)
 	char_count = ft_precision_charcount(nb, precision);
 	ret = malloc((char_count + 1) * sizeof(char));
 	ret[char_count--] = '\0';
-	if (nb < 0 || ft_isnegativezero(nb))
-		nb_cpy = -nb;
-	else
-		nb_cpy = nb;
-	nb_cpy *= ft_power(10, precision + 1);
-	if (ft_dmod(nb_cpy, 10) >= 5)
-	{
-		nb_cpy /= 10;
-		nb_cpy++;
-	}
-	else
-		nb_cpy /= 10;
-	if (precision)
-	{
-		while (precision)
-		{
-			ret[char_count--] = ft_dmod(nb_cpy, 10) + '0';
-			nb_cpy /= 10.0;
-			precision--;
-		}
-		ret[char_count--] = '.';
-	}
+	nb_cpy = ft_precision_printer(ret, nb, &precision, &char_count);
 	while (nb_cpy >= 1)
 	{
 		ret[char_count--] = ft_dmod(nb_cpy, 10) + '0';
@@ -58,36 +62,3 @@ char	*ft_dtoa(const double nb, size_t precision)
 		ret[char_count--] = '-';
 	return (ret);
 }
-
-/*
-#include <stdio.h>
-int	main(void)
-{
-	printf("%s = ", ft_dtoa(-123.123, 3));
-	printf("%.3f\n", -123.123);
-	printf("%s = ", ft_dtoa(-123456789.123456789, 6));
-	printf("%f\n", -123456789.123456789);
-
-	printf("%s = ", ft_dtoa(123456789.123456789, 6));
-	printf("%f\n", 123456789.123456789);
-
-	printf("%s = ", ft_dtoa(123456789123456789.123456789123456789, 12));
-	printf("%.12f\n", 123456789123456789.123456789123456789); // error
-
-	printf("%s = ", ft_dtoa(123456789.1234, 0));
-	printf("%.0f\n", 123456789.1234);
-
-	printf("%s = ", ft_dtoa(0.0, 0));
-	printf("%.0f\n", 0.0);
-
-	printf("%s = ", ft_dtoa(-0., 0));
-	printf("%.0f\n", -0.);
-
-	printf("%s = ", ft_dtoa(-0., 5));
-	printf("%.5f\n", -0.);
-
-	printf("%s = ", ft_dtoa(0., 12));
-	printf("%.12f\n", 0.);
-	return (0);
-}
-*/
