@@ -12,63 +12,69 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-static double ft_shiftcomma(const double *nb, int *comma_shift)
+static double	ft_shiftcomma(const double *nb, int *comma_shift)
 {
-	double	d_nb;
+	double	nb_cpy;
 
 	if (*nb == 0)
 		return (*nb);
-	d_nb = *nb;
-	while (d_nb >= 10 || d_nb <= -10)
+	nb_cpy = *nb;
+	while (nb_cpy >= 10 || nb_cpy <= -10)
 	{
 		(*comma_shift)--;
-		d_nb /= 10;
+		nb_cpy /= 10;
 	}
-	while (d_nb < 1 && d_nb > -1)
+	while (nb_cpy < 1 && nb_cpy > -1)
 	{
 		(*comma_shift)++;
-		d_nb *= 10;
+		nb_cpy *= 10;
 	}
-	return (d_nb);
+	return (nb_cpy);
 }
 
 char	*ft_sntoa(const double nb, const size_t precision, const t_bool caps)
 {
 	char	*ret;
-	double	d_nb;
+	double	nb_cpy;
+	size_t	str_charcount;
+	size_t	substr_charcount;
 	int		comma_shift;
-	size_t	size;
 
 	comma_shift = 0;
-	d_nb = ft_shiftcomma(&nb, &comma_shift);
-	size = ft_precision_charcount(d_nb, precision) + ft_precision_charcount(comma_shift, 0) + 1;
-	if ((comma_shift / 10) < 10 && (comma_shift / 10) > -10)
-		size++;
-	ret = malloc((size + 1) * sizeof(char));
-	(void)d_nb;
+	nb_cpy = ft_shiftcomma(&nb, &comma_shift);
+	str_charcount = ft_precision_charcount(nb_cpy, precision);
+	substr_charcount = ft_precision_charcount(comma_shift, 0);
+	if (comma_shift >= 0)
+		substr_charcount++;
+	if (comma_shift < 10 && comma_shift > -10)
+		substr_charcount++;
+	str_charcount++;
+	ret = malloc((str_charcount + substr_charcount + 1) * sizeof(char));
+	if (!ret)
+		return (NULL);
+	ret[str_charcount--] = '\0';
 	(void)caps;
-	(void)precision;
 	return (ret);
 }
 
-/*
 int	main(void)
 {
-	char	*s;
-	double	nb;
-	size_t	precision;
-	t_bool	caps;
+	char			*ret;
+	const double	nb = 12345.12345;
+	size_t			precision;
+	t_bool			caps;
 
-	nb = 1.123;
-	precision = 0;
-	caps = true;
-	s = ft_sntoa(nb, precision, caps);
-	printf("%s\n", s);
-	printf("%.0e\n", nb);
-	free(s);
+	precision = 5;
+	caps = false;
+	ret = ft_sntoa(nb, precision, caps);
+	printf("%s\n", ret);
+	if (caps)
+		printf("%.*E\n", (int)precision, nb);
+	else
+		printf("%.*e\n", (int)precision, nb);
+	free(ret);
 	return (0);
 }
-*/
 
 /*
 static void	ft_push_comma(double *nb, int *comma_placement)

@@ -72,7 +72,7 @@ char			*ft_itoa_base(int nb, const char *base);
 char			*ft_ltoa_base(unsigned long nb, const char *base);
 char			*ft_llitoa(long long int n);
 char			*ft_dtoa(const double nb, const size_t precision);
-char			*ft_sntoa(double nb, const size_t precision,
+char			*ft_sntoa(const double nb, const size_t precision,
 					const t_bool caps);
 
 void			ft_dash_setter(const char *s, t_flags *flags_list, int *i);
