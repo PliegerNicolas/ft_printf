@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/21 15:06:36 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:24:44 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ char			*ft_llitoa(long long int n);
 char			*ft_dtoa(const double nb, const size_t precision);
 char			*ft_sntoa(const double nb, const size_t precision,
 					const t_bool caps);
+char			*ft_ptoa(void *ptr);
 
 void			ft_dash_setter(const char *s, t_flags *flags_list, int *i);
 void			ft_dash_convertor(const char *s, t_flags *flags_list, int *i);
@@ -113,6 +114,8 @@ void			ft_convertor_f(const char *s, t_flags *flags_list, int *i,
 void			ft_convertor_e(const char *s, t_flags *flags_list, int *i,
 					va_list args);
 void			ft_convertor_g(const char *s, t_flags *flags_list, int *i,
+					va_list args);
+void			ft_convertor_p(const char *s, t_flags *flags_list, int *i,
 					va_list args);
 
 #endif

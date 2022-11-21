@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:21:45 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/21 16:16:35 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:28:04 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -60,7 +60,6 @@ static void	ft_handler_mainstr(char *ret, double *nb, const size_t precision,
 							size_t *char_count)
 {
 	size_t	precision_cpy;
-	int		temp;
 
 	precision_cpy = precision;
 	if (precision_cpy)

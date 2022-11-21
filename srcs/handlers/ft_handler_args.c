@@ -6,19 +6,10 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:27:23 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/21 13:14:34 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:23:49 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-
-static void	ft_handler_args_splitter(const char *s, va_list args,
-								t_flags *flags_list, int *i)
-{
-	if (s[*i] == 'p')
-		va_arg(args, void *);
-	else if (s[*i] == 'n')
-		flags_list->tw_chars = flags_list->tw_chars;
-}
 
 void	ft_handler_args(const char *s, va_list args, t_flags *flags_list,
 			int *i)
@@ -35,5 +26,7 @@ void	ft_handler_args(const char *s, va_list args, t_flags *flags_list,
 	ft_convertor_f(s, flags_list, i, args);
 	ft_convertor_e(s, flags_list, i, args);
 	ft_convertor_g(s, flags_list, i, args);
-	ft_handler_args_splitter(s, args, flags_list, i);
+	ft_convertor_p(s, flags_list, i, args);
+	if (s[*i] == 'n')
+		flags_list->tw_chars = flags_list->tw_chars;
 }
