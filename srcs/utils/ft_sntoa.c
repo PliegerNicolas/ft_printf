@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:21:45 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/21 10:56:15 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/21 11:01:16 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -56,7 +56,7 @@ static void	ft_handle_substr(char *ret, int *commashift, size_t *char_count,
 	}
 }
 
-static void	ft_handle_precision(char *ret, double *nb, const size_t precision,
+static void	ft_handler_mainstr(char *ret, double *nb, const size_t precision,
 							size_t *char_count)
 {
 	size_t	precision_cpy;
@@ -101,26 +101,6 @@ char	*ft_sntoa(const double nb, const size_t precision, const t_bool caps)
 		ret[char_count + 2 + substr_len--] = commashift % 10 + '0';
 		commashift /= 10;
 	}
-	ft_handle_precision(ret, &nb_cpy, precision, &char_count);
+	ft_handler_mainstr(ret, &nb_cpy, precision, &char_count);
 	return (ret);
-}
-
-int	main(void)
-{
-	char	*ret;
-	double	nb;
-	t_bool	caps;
-	size_t	precision;
-
-	nb = 0.00123;
-	precision = 1;
-	caps = false;
-	ret = ft_sntoa(nb, precision, caps);
-	printf("%s\n", ret);
-	if (caps)
-		printf("%.1E", nb);
-	else
-		printf("%.1e", nb);
-	free(ret);
-	return (0);
 }

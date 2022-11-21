@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:27:23 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/16 17:59:15 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/21 11:07:57 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -14,12 +14,7 @@
 static void	ft_handler_args_splitter(const char *s, va_list args,
 								t_flags *flags_list, int *i)
 {
-	ft_convertor_f(s, flags_list, i, args);
-	if (s[*i] == 'e')
-		va_arg(args, double);
-	else if (s[*i] == 'E')
-		va_arg(args, double);
-	else if (s[*i] == 'g')
+	if (s[*i] == 'g')
 		va_arg(args, double);
 	else if (s[*i] == 'G')
 		va_arg(args, double);
@@ -41,5 +36,7 @@ void	ft_handler_args(const char *s, va_list args, t_flags *flags_list,
 	ft_convertor_u(s, flags_list, i, args);
 	ft_convertor_c(s, flags_list, i, args);
 	ft_convertor_s(s, flags_list, i, args);
+	ft_convertor_f(s, flags_list, i, args);
+	ft_convertor_e(s, flags_list, i, args);
 	ft_handler_args_splitter(s, args, flags_list, i);
 }
