@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:21:45 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/21 10:21:39 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/21 10:50:10 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -39,22 +39,42 @@ static double	ft_commashift(double *nb_cpy, int *commashift)
 	return (commashift_len);
 }
 
-static void	ft_handle_precision(char *ret, double *nb, size_t *precision,
+static void	ft_handle_substr(char *ret, int *commashift, size_t *char_count,
+						size_t *substr_len)
+{
+	ret[(*char_count)--] = '+';
+	if (*commashift < 0)
+	{
+		ret[(*char_count) + 1] = '-';
+		*commashift = -(*commashift);
+	}
+	ret[(*char_count)--] = 'e';
+	while (*substr_len)
+	{
+		ret[(*char_count) + 2 + (*substr_len)--] = (*commashift) % 10 + '0';
+		*commashift /= 10;
+	}
+}
+
+static void	ft_handle_precision(char *ret, double *nb, const size_t precision,
 							size_t *char_count)
 {
-	if (*precision)
+	size_t	precision_cpy;
+
+	precision_cpy = precision;
+	if (precision_cpy)
 	{
-		*nb *= ft_power(10, *precision);
-		while((*precision)--)
+		*nb *= ft_power(10, precision_cpy);
+		while (precision_cpy--)
 		{
 			ret[(*char_count)--] = ft_dmod(*nb, 10) + '0';
 			*nb /= 10;
 		}
-		ret[*(char_count)--] = '.';
+		ret[(*char_count)--] = '.';
 	}
 }
 
-char	*ft_sntoa(const double nb, size_t precision, const t_bool caps)
+char	*ft_sntoa(const double nb, const size_t precision, const t_bool caps)
 {
 	char	*ret;
 	double	nb_cpy;
@@ -70,13 +90,7 @@ char	*ft_sntoa(const double nb, size_t precision, const t_bool caps)
 	if (!ret)
 		return (NULL);
 	ret[char_count-- + substr_len] = '\0';
-	ret[char_count--] = '+';
-	if (commashift < 0)
-	{
-		ret[char_count + 1] = '-';
-		commashift = -commashift;
-	}
-	ret[char_count--] = 'e';
+	ft_handle_substr(ret, &commashift, &char_count, &substr_len);
 	if (caps)
 		ret[char_count + 1] -= 32;
 	while (substr_len)
@@ -84,16 +98,7 @@ char	*ft_sntoa(const double nb, size_t precision, const t_bool caps)
 		ret[char_count + 2 + substr_len--] = commashift % 10 + '0';
 		commashift /= 10;
 	}
-	if (precision)
-	{
-		nb_cpy *= ft_power(10, precision);
-		while(precision--)
-		{
-			ret[char_count--] = ft_dmod(nb_cpy, 10) + '0';
-			nb_cpy /= 10;
-		}
-		ret[char_count--] = '.';
-	}
+	ft_handle_precision(ret, &nb_cpy, precision, &char_count);
 	ret[char_count--] = ft_dmod(nb_cpy, 10) + '0';
 	if (nb_cpy < 0 || ft_isnegativezero(nb_cpy))
 		ret[char_count] = '-';
