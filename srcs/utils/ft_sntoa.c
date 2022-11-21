@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:21:45 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/21 10:50:10 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/21 10:56:15 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -72,6 +72,9 @@ static void	ft_handle_precision(char *ret, double *nb, const size_t precision,
 		}
 		ret[(*char_count)--] = '.';
 	}
+	ret[(*char_count)--] = ft_dmod(*nb, 10) + '0';
+	if (*nb < 0 || ft_isnegativezero(*nb))
+		ret[*char_count] = '-';
 }
 
 char	*ft_sntoa(const double nb, const size_t precision, const t_bool caps)
@@ -99,9 +102,6 @@ char	*ft_sntoa(const double nb, const size_t precision, const t_bool caps)
 		commashift /= 10;
 	}
 	ft_handle_precision(ret, &nb_cpy, precision, &char_count);
-	ret[char_count--] = ft_dmod(nb_cpy, 10) + '0';
-	if (nb_cpy < 0 || ft_isnegativezero(nb_cpy))
-		ret[char_count] = '-';
 	return (ret);
 }
 
