@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:21:45 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/21 11:01:16 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/21 16:16:35 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -17,7 +17,7 @@ static double	ft_commashift(double *nb_cpy, int *commashift)
 	int		commashift_cpy;
 	size_t	commashift_len;
 
-	while (*nb_cpy > 10 || *nb_cpy <= -10)
+	while (*nb_cpy >= 10 || *nb_cpy <= -10)
 	{
 		(*commashift)++;
 		*nb_cpy /= 10;
@@ -60,6 +60,7 @@ static void	ft_handler_mainstr(char *ret, double *nb, const size_t precision,
 							size_t *char_count)
 {
 	size_t	precision_cpy;
+	int		temp;
 
 	precision_cpy = precision;
 	if (precision_cpy)
@@ -68,6 +69,8 @@ static void	ft_handler_mainstr(char *ret, double *nb, const size_t precision,
 		while (precision_cpy--)
 		{
 			ret[(*char_count)--] = ft_dmod(*nb, 10) + '0';
+			if (precision_cpy == precision - 1)
+				ret[(*char_count) + 1]++;
 			*nb /= 10;
 		}
 		ret[(*char_count)--] = '.';
