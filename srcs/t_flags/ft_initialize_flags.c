@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 17:36:46 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/17 12:00:00 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/22 13:29:15 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -19,6 +19,7 @@ t_flags	*ft_initialize_flags(void)
 	if (!flags)
 		return (NULL);
 	flags->str = NULL;
+	flags->str_len = 0;
 	flags->tw_chars = 0;
 	flags->percent = false;
 	flags->dash = false;

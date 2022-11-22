@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/21 17:24:44 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/22 13:40:14 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ enum { false, true };
 typedef struct s_flags
 {
 	char	*str;
-	int		tw_chars;
+	size_t	str_len;
+	size_t	tw_chars;
 	t_bool	percent;
 
 	t_bool	dash;
@@ -48,11 +49,14 @@ void			ft_next_flags(t_flags *flags);
 int				ft_isflag(const char c);
 int				ft_istype(const char c);
 
+void			*ft_realloc_str(char *str, size_t current_size, size_t size);
+void			*ft_realloc_paddedstr(char *str, size_t current_size, size_t size);
+
 int				ft_handler_percent(const char *s, t_flags *flags_list,
 					int *i);
 void			ft_handler_flags_setter(const char *s, va_list args,
 					t_flags *flags_list, int *i);
-void			ft_handler_flags(const char *s, va_list args,
+void			ft_handler_flags(const char *s,
 					t_flags *flags_list, int *i);
 void			ft_handler_args(const char *s, va_list args,
 					t_flags *flags_list, int *i);
@@ -75,6 +79,7 @@ char			*ft_dtoa(const double nb, const size_t precision);
 char			*ft_sntoa(const double nb, const size_t precision,
 					const t_bool caps);
 char			*ft_ptoa(void *ptr);
+void			ft_fillpadding(char	*s, size_t strlen, t_flags *flags_list);
 
 void			ft_dash_setter(const char *s, t_flags *flags_list, int *i);
 void			ft_dash_convertor(const char *s, t_flags *flags_list, int *i);
@@ -82,10 +87,9 @@ void			ft_zero_setter(const char *s, t_flags *flags_list, int *i);
 void			ft_zero_convertor(const char *s, t_flags *flags_list, int *i);
 void			ft_asterisk_setter(const char *s, va_list args,
 					t_flags *flags_list, int *i);
-void			ft_asterisk_convertor(const char *s, va_list args,
-					t_flags *flags_list, int *i);
+void			ft_asterisk_convertor(t_flags *flags_list);
 void			ft_digits_setter(const char *s, t_flags *flags_list, int *i);
-void			ft_digits_convertor(const char *s, t_flags *flags_list, int *i);
+void			ft_digits_convertor(t_flags *flags_list);
 void			ft_plus_setter(const char *s, t_flags *flags_list, int *i);
 void			ft_plus_convertor(const char *s, t_flags *flags_list, int *i);
 void			ft_blank_setter(const char *s, t_flags *flags_list, int *i);

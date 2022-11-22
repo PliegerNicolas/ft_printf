@@ -6,57 +6,51 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:57:04 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/16 17:11:05 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/22 13:40:32 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static void	*ft_memcpy_padded(void *dest, const void *src, size_t start,
-						size_t n)
+static void	ft_chrcpy_pad(char *dest, char *src, size_t start, size_t size)
 {
-	size_t	i;
+	size_t		i;
 
 	if (!dest && !src)
-		return (NULL);
+		return ;
 	i = 0;
-	while (i + start < n)
+	while (i + start < size)
 	{
-		*(unsigned char *)(dest + i + start) = *(unsigned char *)(src + i);
+		dest[i + start] = src[i];
 		i++;
 	}
-	return (dest);
 }
 
-void	*ft_realloc(void *ptr, size_t size)
+void	*ft_realloc_str(char *str, size_t current_size, size_t size)
 {
-	char	*new_ptr;
-	size_t	cur_size;
+	char	*new_str;
 
-	if (!ptr)
-		return (malloc(size));
-	cur_size = sizeof(ptr);
-	if (size <= cur_size)
-		return (ptr);
-	new_ptr = malloc(size);
-	ft_bzero(new_ptr, size);
-	ft_memcpy(new_ptr, ptr, cur_size);
-	free(ptr);
-	return (new_ptr);
+	if (!str)
+		return ((void *)malloc(size * sizeof(char)));
+	if (size <= current_size)
+		return ((void *)str);
+	new_str = malloc(size + 1);
+	ft_bzero((void *)new_str, size + 1);
+	ft_memcpy((void *)new_str, (void *)str, current_size);
+	free(str);
+	return ((void *)new_str);
 }
 
-void	*ft_realloc_mempadded(void *ptr, size_t size)
+void	*ft_realloc_paddedstr(char *str, size_t current_size, size_t size)
 {
-	char	*new_ptr;
-	size_t	cur_size;
+	char	*new_str;
 
-	if (!ptr)
-		return (malloc(size));
-	cur_size = sizeof(ptr);
-	if (size <= cur_size)
-		return (ptr);
-	new_ptr = malloc(size);
-	ft_bzero(new_ptr, size);
-	ft_memcpy_padded(new_ptr, ptr, cur_size + 1, size);
-	free(ptr);
-	return (new_ptr);
+	if (!str)
+		return ((void *)malloc(size * sizeof(char)));
+	if (size <= current_size)
+		return (str);
+	new_str = malloc(size + 1);
+	ft_bzero((void *)new_str, size + 1);
+	ft_chrcpy_pad(new_str, str, size - current_size, size);
+	free(str);
+	return ((void *)new_str);
 }

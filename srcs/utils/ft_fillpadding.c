@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convertor_x.c                                   :+:      :+:    :+:   */
+/*   ft_fillpadding.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 16:53:43 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/22 13:28:29 by nplieger         ###   ########.fr       */
+/*   Created: 2022/11/22 10:44:51 by nplieger          #+#    #+#             */
+/*   Updated: 2022/11/22 14:01:37 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_convertor_x(const char *s, t_flags *flags_list, int *i, va_list args)
+void	ft_fillpadding(char	*s, size_t strlen, t_flags *flags_list)
 {
-	if (s[*i] == 'x')
-	{
-		flags_list->str = ft_ltoa_base(va_arg(args, unsigned int),
-				"0123456789abcdef");
-		flags_list->str_len = ft_strlen(flags_list->str);
-	}
-	else if (s[*i] == 'X')
-	{
-		flags_list->str = ft_ltoa_base(va_arg(args, unsigned int),
-				"0123456789ABCDEF");
-		flags_list->str_len = ft_strlen(flags_list->str);
-	}
+	size_t	i;
+	char	filler_char;
+
+	if (flags_list->zero)
+		filler_char = '0';
+	else
+		filler_char = ' ';
+	i = 0;
+	if (flags_list->dash)
+		while (strlen < flags_list->padding)
+			s[strlen++] = filler_char;
+	else
+		while (i < flags_list->padding - strlen)
+			s[i++] = filler_char;
 }

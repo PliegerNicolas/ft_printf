@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:17:44 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/21 17:26:07 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/22 10:45:32 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS			:=	ft_printf \
 					ft_parse_format \
 					t_flags/ft_initialize_flags \
 					t_flags/ft_next_flags \
+					ft_realloc \
 					handlers/ft_handler_args \
 					handlers/ft_handler_flags \
 					handlers/ft_handler_percent \
@@ -39,6 +40,7 @@ SRCS			:=	ft_printf \
 					utils/ft_putcharc \
 					utils/ft_putpadding \
 					utils/ft_putstrc \
+					utils/ft_fillpadding \
 					flags/ft_isflag \
 					flags/ft_asterisk \
 					flags/ft_blank \

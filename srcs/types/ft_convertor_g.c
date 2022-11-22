@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:02:04 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/21 16:37:00 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/22 13:26:43 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -28,11 +28,13 @@ void	ft_convertor_g(const char *s, t_flags *flags_list, int *i, va_list args)
 		if (str1 >= str2)
 		{
 			flags_list->str = str1;
+			flags_list->str_len = ft_strlen(flags_list->str);
 			free(str2);
 		}
 		else
 		{
 			flags_list->str = str2;
+			flags_list->str_len = ft_strlen(flags_list->str);
 			free(str1);
 		}
 	}
