@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/22 15:01:53 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:18:07 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 
 # define TYPE_IDENTIFIERS "dioxXucsfeEgGpn"
-# define FLAG_IDENTIFIERS "-0+ #*"
+# define FLAG_IDENTIFIERS "-0+ #*."
 
 # define FALSE 0
 # define TRUE 1
@@ -37,8 +37,8 @@ typedef struct s_flags
 	t_bool	blank;
 	t_bool	asterisk;
 	float	padding;
-	t_bool	dot;
-	int		precision;
+	size_t	dot;
+	size_t	precision;
 	t_bool	hash;
 }	t_flags;
 
