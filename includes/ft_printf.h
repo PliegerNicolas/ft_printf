@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/22 13:40:14 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:01:53 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 # define TYPE_IDENTIFIERS "dioxXucsfeEgGpn"
 # define FLAG_IDENTIFIERS "-0+ #*"
 
+# define FALSE 0
+# define TRUE 1
 typedef int	t_bool;
-enum { false, true };
 
 typedef struct s_flags
 {
 	char	*str;
-	size_t	str_len;
+	char	type;
 	size_t	tw_chars;
 	t_bool	percent;
 

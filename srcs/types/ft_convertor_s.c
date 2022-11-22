@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:47:45 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/22 13:27:41 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:14:08 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -22,6 +22,6 @@ void	ft_convertor_s(const char *s, t_flags *flags_list, int *i, va_list args)
 			flags_list->str = ft_strdup("(null)");
 		else
 			flags_list->str = ft_strdup(str);
-		flags_list->str_len = ft_strlen(flags_list->str);
+		flags_list->type = 's';
 	}
 }

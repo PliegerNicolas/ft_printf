@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 17:32:18 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/22 14:08:45 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:42:12 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -30,6 +30,7 @@ int	ft_printf(const char *format, ...)
 	return (tw_chars);
 }
 
+/*
 int	main(void)
 {
 	void	*p;
@@ -40,3 +41,4 @@ int	main(void)
 	free(p);
 	return (0);
 }
+*/
