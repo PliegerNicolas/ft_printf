@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 17:32:18 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/23 11:53:47 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/23 14:57:39 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -30,15 +30,13 @@ int	ft_printf(const char *format, ...)
 	return (tw_chars);
 }
 
-/*
 int	main(void)
 {
 	void	*p;
 
 	p = malloc(0);
-	printf("COUNT : %d\n", printf("%1.s", "21-school.ru"));
-	printf("COUNT : %d\n", ft_printf("%1.s", "21-school.ru"));
+	printf("COUNT : %d\n", printf("%1s", "a"));
+	printf("COUNT : %d\n", ft_printf("%1s", "a"));
 	free(p);
 	return (0);
 }
-*/

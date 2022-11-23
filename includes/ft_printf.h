@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/23 11:53:25 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/23 14:03:37 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ typedef struct s_flags
 	t_bool	plus;
 	t_bool	blank;
 	t_bool	asterisk;
-	float	padding;
+	size_t	width;
+	t_bool	digit;
 	t_bool	dot;
-	size_t	dot_precision;
 	size_t	precision;
+	size_t	precision_dot;
 	t_bool	hash;
 }	t_flags;
 
@@ -51,8 +52,9 @@ void			ft_next_flags(t_flags *flags);
 int				ft_isflag(const char c);
 int				ft_istype(const char c);
 
-void			*ft_realloc_str(char *str, size_t current_size, size_t size);
-void			*ft_realloc_paddedstr(char *str, size_t current_size, size_t size);
+void			*ft_realloc_str(t_flags *flags_list, size_t min_size,
+					size_t max_size);
+void			*ft_realloc_float(t_flags *flags_list);
 
 int				ft_handler_percent(const char *s, t_flags *flags_list,
 					int *i);
@@ -73,6 +75,7 @@ long long int	ft_power(long long int nb, int power);
 double			ft_dmod(double x, int y);
 int				ft_ispositivezero(double nb);
 int				ft_isnegativezero(double nb);
+char			ft_select_paddingchar(t_flags *flags_list);
 size_t			ft_precision_charcount(const double nb, const size_t precision);
 char			*ft_itoa_base(int nb, const char *base);
 char			*ft_ltoa_base(unsigned long nb, const char *base);
@@ -81,7 +84,6 @@ char			*ft_dtoa(const double nb, const size_t precision);
 char			*ft_sntoa(const double nb, const size_t precision,
 					const t_bool caps);
 char			*ft_ptoa(void *ptr);
-void			ft_fillpadding(char	*s, size_t strlen, t_flags *flags_list);
 
 void			ft_dash_setter(const char *s, t_flags *flags_list, int *i);
 void			ft_dash_convertor(const char *s, t_flags *flags_list, int *i);
