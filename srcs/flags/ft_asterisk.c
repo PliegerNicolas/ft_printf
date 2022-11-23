@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:59:10 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/22 16:40:57 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/23 11:52:47 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -40,6 +40,5 @@ void	ft_asterisk_convertor(t_flags *flags_list)
 		if (flags_list->padding > strlen)
 			ft_fillpadding(flags_list->str, strlen, flags_list);
 		flags_list->asterisk = FALSE;
-		flags_list->padding = 0;
 	}
 }

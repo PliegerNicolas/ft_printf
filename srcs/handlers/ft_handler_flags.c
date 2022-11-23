@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:45:49 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/22 16:16:57 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/23 10:10:31 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -29,11 +29,14 @@ void	ft_handler_flags_setter(const char *s, va_list args,
 void	ft_handler_flags(const char *s, t_flags *flags_list,
 			int *i)
 {
-	ft_dash_convertor(s, flags_list, i);
-	ft_zero_convertor(s, flags_list, i);
-	ft_plus_convertor(s, flags_list, i);
-	ft_blank_convertor(s, flags_list, i);
-	ft_hash_convertor(s, flags_list, i);
-	ft_asterisk_convertor(flags_list);
-	ft_digits_convertor(flags_list);
+	if (s[*i] != '%')
+	{
+		ft_dash_convertor(s, flags_list, i);
+		ft_zero_convertor(s, flags_list, i);
+		ft_plus_convertor(s, flags_list, i);
+		ft_blank_convertor(s, flags_list, i);
+		ft_hash_convertor(s, flags_list, i);
+		ft_asterisk_convertor(flags_list);
+		ft_digits_convertor(flags_list);
+	}
 }

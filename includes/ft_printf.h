@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/22 17:18:07 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/23 11:53:25 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ typedef struct s_flags
 	t_bool	blank;
 	t_bool	asterisk;
 	float	padding;
-	size_t	dot;
+	t_bool	dot;
+	size_t	dot_precision;
 	size_t	precision;
 	t_bool	hash;
 }	t_flags;
