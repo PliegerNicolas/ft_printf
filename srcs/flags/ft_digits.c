@@ -6,14 +6,14 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:08:41 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/23 15:06:35 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:25:54 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
 void	ft_digits_setter(const char *s, t_flags *flags_list, int *i)
 {
-	if(flags_list->asterisk)
+	if (flags_list->asterisk)
 		return ;
 	flags_list->digit = TRUE;
 	while (s[*i] && ft_isdigit(s[*i]))
@@ -55,7 +55,7 @@ static void	ft_digits_convertor_float(t_flags *flags_list)
 	flags_list->str = ft_realloc_float(flags_list);
 }
 
-static void ft_digits_convertor_string(t_flags *flags_list)
+static void	ft_digits_convertor_string(t_flags *flags_list)
 {
 	size_t		min_size;
 	size_t		max_size;
@@ -74,7 +74,7 @@ void	ft_digits_convertor(t_flags *flags_list)
 {
 	if (flags_list->digit == FALSE && flags_list->asterisk == FALSE)
 		return ;
-	if (flags_list->type == 's')
+	if (flags_list->type == 's' || flags_list->type == 'p')
 		ft_digits_convertor_string(flags_list);
 	else
 		ft_digits_convertor_float(flags_list);

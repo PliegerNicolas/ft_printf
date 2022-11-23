@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/23 14:03:37 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:25:30 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # define FALSE 0
 # define TRUE 1
+
 typedef int	t_bool;
 
 typedef struct s_flags
