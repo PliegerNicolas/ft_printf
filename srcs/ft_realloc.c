@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:57:04 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/23 15:02:22 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/23 16:31:10 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -42,6 +42,7 @@ static void	*ft_memcpy_padded(void *dest, const void *src, size_t n,
 void	*ft_realloc_str(t_flags *flags_list, size_t min_size, size_t max_size)
 {
 	char	*new_str;
+	size_t	start;
 
 	if (!flags_list->str)
 		return (flags_list->str);
@@ -53,13 +54,14 @@ void	*ft_realloc_str(t_flags *flags_list, size_t min_size, size_t max_size)
 	if (!new_str)
 		return (NULL);
 	ft_bzero((void *)new_str, flags_list->width + 1);
-	if (flags_list->dash)
-		ft_memcpy((void *)new_str, (void *)flags_list->str,
-			flags_list->width + 1);
+	if (flags_list->width < ft_strlen(flags_list->str))
+		start = 0;
 	else
-		ft_memcpy_padded((void *)new_str, (void *)flags_list->str,
-			flags_list->width,
-			flags_list->width - ft_strlen(flags_list->str));
+		start = flags_list->width - ft_strlen(flags_list->str);
+	if (flags_list->dash)
+		ft_memcpy(new_str, flags_list->str, flags_list->width + 1);
+	else
+		ft_memcpy_padded(new_str, flags_list->str, flags_list->width, start);
 	ft_fillpadding(new_str, flags_list);
 	free(flags_list->str);
 	return ((void *)new_str);
