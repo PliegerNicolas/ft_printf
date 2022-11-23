@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:08:41 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/23 14:56:13 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:06:35 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -65,6 +65,8 @@ static void ft_digits_convertor_string(t_flags *flags_list)
 		max_size = flags_list->precision_dot;
 	else
 		max_size = ft_strlen(flags_list->str);
+	if (max_size <= min_size)
+		max_size = min_size;
 	flags_list->str = ft_realloc_str(flags_list, min_size, max_size);
 }
 
