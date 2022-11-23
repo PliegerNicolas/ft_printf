@@ -6,10 +6,22 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:08:41 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/23 15:25:54 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/23 16:15:07 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+
+static int	ft_count_width(char *s, size_t integer_digits_size)
+{
+	size_t		i;
+
+	i = 0;
+	while (s[i] && s[i] != '.')
+		i++;
+	if (integer_digits_size > i)
+		return (integer_digits_size);
+	return (i);
+}
 
 void	ft_digits_setter(const char *s, t_flags *flags_list, int *i)
 {
@@ -47,7 +59,8 @@ static void	ft_digits_convertor_float(t_flags *flags_list)
 		flags_list->precision_dot = 0;
 		fractional_digits_size = flags_list->precision_dot;
 	}
-	flags_list->width = integer_digits_size + fractional_digits_size;
+	flags_list->width = ft_count_width(flags_list->str, integer_digits_size)
+		+ fractional_digits_size;
 	if (flags_list->dot)
 		flags_list->width++;
 	if (flags_list->type == '\0')
