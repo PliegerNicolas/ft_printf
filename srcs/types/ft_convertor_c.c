@@ -25,10 +25,7 @@ void	ft_convertor_c(const char *s, t_flags *flags_list, int *i, va_list args)
 		flags_list->str = str;
 		flags_list->type = 'c';
 		if (!str[0])
-		{
 			flags_list->type = '\0';
-			flags_list->width--;
-		}
 		else
 			flags_list->type = 'c';
 	}

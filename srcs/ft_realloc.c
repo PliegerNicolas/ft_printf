@@ -46,5 +46,4 @@ void	*ft_realloc_padding(t_flags *flags_list, char padding_char)
 	ft_fillpadding(new_str, padding_char, flags_list->width);
 	free(flags_list->str);
 	return (new_str);
-	return ((void *)flags_list->str);
 }

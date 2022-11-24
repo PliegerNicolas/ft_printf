@@ -38,43 +38,13 @@ void	ft_digits_setter(const char *s, t_flags *flags_list, int *i)
 	}
 }
 
-static void	ft_digits_convertor_nbr(t_flags *flags_list, size_t strlen)
-{
-	if (flags_list->width < strlen)
-		flags_list->width = strlen;
-	if (flags_list->dot)
-	{
-		flags_list->width = strlen;
-		flags_list->width = flags_list->digits + flags_list->precision;
-	}
-}
-
-/*
 static void	ft_digits_convertor_string(t_flags *flags_list, size_t strlen)
 {
 	char	*temp;
 
-	if (flags_list->width < strlen)
-		flags_list->width = strlen;
-	if (flags_list->dot)
-	{
-		if (flags_list->precision > strlen)
-			flags_list->precision = strlen;
-		if (flags_list->precision)
-		{
-			temp = flags_list->str;
-			flags_list->str = ft_substr(temp, 0, flags_list->precision);
-			free(temp);
-		}
-	}
-}
-*/
-
-static void	ft_digits_convertor_string(t_flags *flags_list, size_t strlen)
-{
-	char	*temp;
-
-	if (flags_list->width < strlen)
+	if (flags_list->type == '\0')
+		flags_list->width--;
+	if (!flags_list->width || (!flags_list->dot && strlen > flags_list->width))
 		flags_list->width = strlen;
 	if (flags_list->dot)
 	{
@@ -91,11 +61,8 @@ void	ft_digits_convertor(t_flags *flags_list)
 	if (flags_list->digit == FALSE && flags_list->asterisk == FALSE)
 		return ;
 	strlen = ft_strlen(flags_list->str);
-	if (flags_list->type == 's')
-		ft_digits_convertor_string(flags_list, strlen);
-	else
-		ft_digits_convertor_nbr(flags_list, strlen);
-	if (flags_list->width > strlen)
-		flags_list->str = ft_realloc_padding(flags_list,
+	ft_digits_convertor_string(flags_list, strlen);
+	if (flags_list->width)
+	flags_list->str = ft_realloc_padding(flags_list,
 				ft_select_paddingchar(flags_list));
 }

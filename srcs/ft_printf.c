@@ -36,6 +36,8 @@ int	main(void)
 	void	*p;
 
 	p = malloc(0);
+	printf("COUNT : %d\n", printf("%10c", '\0'));
+	printf("COUNT : %d\n", ft_printf("%10c", '\0'));
 	printf("COUNT : %d\n", printf("%1c", '\0'));
 	printf("COUNT : %d\n", ft_printf("%1c", '\0'));
 	free(p);
