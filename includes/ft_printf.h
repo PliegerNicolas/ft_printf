@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/23 15:25:30 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:26:46 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ typedef struct s_flags
 	t_bool	plus;
 	t_bool	blank;
 	t_bool	asterisk;
-	size_t	width;
 	t_bool	digit;
 	t_bool	dot;
+	size_t	digits;
+	size_t	width;
 	size_t	precision;
-	size_t	precision_dot;
 	t_bool	hash;
 }	t_flags;
 
@@ -53,9 +53,7 @@ void			ft_next_flags(t_flags *flags);
 int				ft_isflag(const char c);
 int				ft_istype(const char c);
 
-void			*ft_realloc_str(t_flags *flags_list, size_t min_size,
-					size_t max_size);
-void			*ft_realloc_float(t_flags *flags_list);
+void			*ft_realloc_padding(t_flags *flags_list, char padding_char);
 
 int				ft_handler_percent(const char *s, t_flags *flags_list,
 					int *i);

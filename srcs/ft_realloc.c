@@ -6,28 +6,12 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:57:04 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/23 16:31:10 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:08:51 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static void	ft_fillpadding(char *s, t_flags *flags_list)
-{
-	size_t		i;
-	char		paddingchar;
-
-	i = 0;
-	paddingchar = ft_select_paddingchar(flags_list);
-	while (i < flags_list->width)
-	{
-		if (s[i] == '\0')
-			s[i] = paddingchar;
-		i++;
-	}
-}
-
-static void	*ft_memcpy_padded(void *dest, const void *src, size_t n,
-						size_t start)
+static void	*ft_memcpy_padded(char *dest, char *src, size_t n, size_t start)
 {
 	size_t		i;
 
@@ -35,56 +19,32 @@ static void	*ft_memcpy_padded(void *dest, const void *src, size_t n,
 		return (NULL);
 	i = 0;
 	while (start < n)
-		*(unsigned char *)(dest + start++) = *(unsigned char *)(src + i++);
+		*(unsigned char *)(dest + start++) = *(src + i++);
 	return (dest);
 }
 
-void	*ft_realloc_str(t_flags *flags_list, size_t min_size, size_t max_size)
+static void	ft_fillpadding(char *str, char padding_char, size_t n)
 {
-	char	*new_str;
-	size_t	start;
-
-	if (!flags_list->str)
-		return (flags_list->str);
-	if (flags_list->dot && max_size < min_size)
-		flags_list->width = min_size;
-	else
-		flags_list->width = max_size;
-	new_str = malloc((flags_list->width + 1) * sizeof(char));
-	if (!new_str)
-		return (NULL);
-	ft_bzero((void *)new_str, flags_list->width + 1);
-	if (flags_list->width < ft_strlen(flags_list->str))
-		start = 0;
-	else
-		start = flags_list->width - ft_strlen(flags_list->str);
-	if (flags_list->dash)
-		ft_memcpy(new_str, flags_list->str, flags_list->width + 1);
-	else
-		ft_memcpy_padded(new_str, flags_list->str, flags_list->width, start);
-	ft_fillpadding(new_str, flags_list);
-	free(flags_list->str);
-	return ((void *)new_str);
+	while (n--)
+		if (str[n] == '\0')
+			str[n] = padding_char;
 }
 
-void	*ft_realloc_float(t_flags *flags_list)
+void	*ft_realloc_padding(t_flags *flags_list, char padding_char)
 {
 	char	*new_str;
 
-	if (!flags_list->str)
-		return (flags_list->str);
-	new_str = malloc((flags_list->width + 1) * sizeof(char));
+	new_str = malloc((flags_list->width) * sizeof(char));
 	if (!new_str)
 		return (NULL);
-	ft_bzero((void *)new_str, flags_list->width + 1);
+	ft_bzero(new_str, flags_list->width);
 	if (flags_list->dash)
-		ft_memcpy((void *)new_str, (void *)flags_list->str,
-			flags_list->width + 1);
+		ft_memcpy(new_str, flags_list->str, flags_list->width);
 	else
-		ft_memcpy_padded((void *)new_str, (void *)flags_list->str,
-			flags_list->width,
+		ft_memcpy_padded(new_str, flags_list->str, flags_list->width,
 			flags_list->width - ft_strlen(flags_list->str));
-	ft_fillpadding(new_str, flags_list);
+	ft_fillpadding(new_str, padding_char, flags_list->width);
 	free(flags_list->str);
-	return ((void *)new_str);
+	return (new_str);
+	return ((void *)flags_list->str);
 }
