@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/24 14:26:46 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/25 12:28:40 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int				ft_isflag(const char c);
 int				ft_istype(const char c);
 
 void			*ft_realloc_padding(t_flags *flags_list, char padding_char);
+void			ft_realloc_int(t_flags *flags_list, size_t strlen);
 
 int				ft_handler_percent(const char *s, t_flags *flags_list,
 					int *i);
