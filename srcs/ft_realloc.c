@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:57:04 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/25 17:04:22 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:27:46 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -39,6 +39,8 @@ void	ft_realloc_int(t_flags *flags_list, size_t strlen)
 
 	if (flags_list->dot)
 	{
+		if (flags_list->str[0] == '0' && !flags_list->precision)
+			return ;
 		if (flags_list->precision)
 		{
 			flags_list->zero = TRUE;
