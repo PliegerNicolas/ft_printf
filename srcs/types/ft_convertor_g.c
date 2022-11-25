@@ -6,12 +6,13 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:02:04 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/25 09:56:19 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:11:05 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static void	ft_g_format_selector(const double nb, t_flags *flags_list, const char *s, int *i)
+static void	ft_g_format_selector(const double nb, t_flags *flags_list,
+						const char *s, int *i)
 {
 	char	*str1;
 	char	*str2;
