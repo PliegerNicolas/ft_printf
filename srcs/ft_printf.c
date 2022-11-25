@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 17:32:18 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/25 12:21:00 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:04:40 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -36,12 +36,14 @@ int	main(void)
 	void	*p;
 
 	p = malloc(0);
-	printf("COUNT : %d\n", printf("%10c", '\0'));
-	printf("COUNT : %d\n", ft_printf("%10c", '\0'));
-	printf("COUNT : %d\n", printf("%.s", "hi there"));
-	printf("COUNT : %d\n", ft_printf("%.s", "hi there"));
-	printf("COUNT : %d\n", printf("%10d", 42));
-	printf("COUNT : %d\n", ft_printf("%10d", 42));
+	printf("COUNT : %d\n", printf("%.3d", 420000));
+	printf("COUNT : %d\n", ft_printf("%.3d", 420000));
+	printf("COUNT : %d\n", printf("%.3d", -1234));
+	printf("COUNT : %d\n", ft_printf("%.3d", -1234));
+	printf("COUNT : %d\n", printf("%.3d", -1));
+	printf("COUNT : %d\n", ft_printf("%.3d", -1));
+	printf("COUNT : %d\n", printf("%.5d", -1234));
+	printf("COUNT : %d\n", ft_printf("%.5d", -1234));
 	free(p);
 	return (0);
 }
