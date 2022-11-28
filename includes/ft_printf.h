@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/28 11:13:54 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:44:55 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_flags
 	t_bool	digit;
 	size_t	digits;
 	size_t	width;
+	size_t	extra_right_padding;
 	size_t	precision;
 	t_bool	hash;
 }	t_flags;

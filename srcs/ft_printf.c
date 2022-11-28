@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 17:32:18 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/28 11:16:24 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/28 12:48:45 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -41,6 +41,8 @@ int	main(void)
 	printf("COUNT : %d\n", ft_printf("%-10.5d", 10));
 	printf("COUNT : %d\n", printf("%-10.2d", -10));
 	printf("COUNT : %d\n", ft_printf("%-10.2d", -10));
+	printf("COUNT : %d\n", printf("%-10.5d", 10));
+	printf("COUNT : %d\n", ft_printf("%-10.5d", 10));
 	free(p);
 	return (0);
 }
