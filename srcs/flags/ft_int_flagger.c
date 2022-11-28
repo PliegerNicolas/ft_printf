@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 09:12:56 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/28 12:30:56 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/28 13:38:36 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -40,6 +40,10 @@ void	ft_int_flagger(t_flags *flags_list, size_t strlen)
 			flags_list->extra_right_padding = 0;
 		flags_list->width = flags_list->precision;
 		if (flags_list->str[0] == '-' && old_precision >= strlen)
+		{
 			flags_list->width++;
+			if (flags_list->extra_right_padding)
+				flags_list->extra_right_padding--;
+		}
 	}
 }
