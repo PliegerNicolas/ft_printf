@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:17:44 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/23 13:37:20 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/28 09:13:33 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ LIBFT			:= $(LIBFT_DIR)/libft.a
 
 SRCS			:=	ft_printf \
 					ft_parse_format \
-					t_flags/ft_initialize_flags \
-					t_flags/ft_next_flags \
+					list/ft_initialize_flags \
+					list/ft_next_flags \
 					ft_realloc \
 					handlers/ft_handler_args \
 					handlers/ft_handler_flags \
@@ -48,6 +48,7 @@ SRCS			:=	ft_printf \
 					flags/ft_hash \
 					flags/ft_plus \
 					flags/ft_zero \
+					flags/ft_int_flagger \
 					types/ft_istype \
 					types/ft_convertor_d \
 					types/ft_convertor_i \

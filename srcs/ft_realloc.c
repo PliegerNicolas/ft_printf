@@ -6,59 +6,10 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:57:04 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/25 17:27:46 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:08:20 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-
-void	ft_realloc_int(t_flags *flags_list, size_t strlen)
-{
-/*
-	if (flags_list->dot)
-	{
-		if (flags_list->dot && flags_list->precision)
-		{
-			flags_list->zero = TRUE;
-			flags_list->dash = FALSE;
-			if (flags_list->precision > strlen)
-				strlen = flags_list->precision;
-			flags_list->width = strlen;
-			if (flags_list->str[0] == '-')
-				flags_list->width++;
-		}
-		else
-		{
-			flags_list->dash = TRUE;
-			flags_list->zero = FALSE;
-			flags_list->width = strlen;
-			flags_list->precision = strlen;
-		}
-	}
-	*/
-	size_t		old_precision;
-
-	if (flags_list->dot)
-	{
-		if (flags_list->str[0] == '0' && !flags_list->precision)
-			return ;
-		if (flags_list->precision)
-		{
-			flags_list->zero = TRUE;
-			flags_list->dash = FALSE;
-		}
-		else
-		{
-			flags_list->zero = FALSE;
-			flags_list->dash = TRUE;
-		}
-		old_precision = flags_list->precision;
-		if (flags_list->precision < strlen)
-			flags_list->precision = strlen;
-		flags_list->width = flags_list->precision;
-		if (flags_list->str[0] == '-' && old_precision >= strlen)
-			flags_list->width++;
-	}
-}
 
 static void	*ft_memcpy_padded(char *dest, t_flags *flags_list, size_t n, size_t start)
 {
@@ -81,6 +32,22 @@ static void	*ft_memcpy_padded(char *dest, t_flags *flags_list, size_t n, size_t 
 	return (dest);
 }
 
+static void	*ft_memsafecpy(void *dest, const void *src, size_t n)
+{
+	size_t	i;
+
+	if (!dest && !src)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		if (*(unsigned char *)(src + i))
+			*(unsigned char *)(dest + i) = *(unsigned char *)(src + i);
+		i++;
+	}
+	return (dest);
+}
+
 static void	ft_fillpadding(char *str, char padding_char, size_t n)
 {
 	while (n--)
@@ -97,7 +64,7 @@ void	*ft_realloc_padding(t_flags *flags_list, char padding_char)
 		return (NULL);
 	ft_bzero(new_str, flags_list->width + 1);
 	if (flags_list->dash)
-		ft_memcpy(new_str, flags_list->str, flags_list->width);
+		ft_memsafecpy(new_str, flags_list->str, flags_list->width);
 	else
 		ft_memcpy_padded(new_str, flags_list, flags_list->width,
 			flags_list->width - ft_strlen(flags_list->str));

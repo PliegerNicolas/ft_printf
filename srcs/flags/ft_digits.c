@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:08:41 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/25 10:10:45 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:16:03 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -42,7 +42,7 @@ static void	ft_digits_convertor_string(t_flags *flags_list, size_t strlen)
 {
 	char	*temp;
 
-	if (flags_list->type == '\0')
+	if (flags_list->type == '\0' && flags_list->width)
 		flags_list->width--;
 	if ((!flags_list->width && !flags_list->dot)
 		|| (!flags_list->dot && strlen > flags_list->width))

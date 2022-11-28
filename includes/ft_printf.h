@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/25 12:28:40 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:13:54 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_flags
 	t_bool	plus;
 	t_bool	blank;
 	t_bool	asterisk;
-	t_bool	digit;
 	t_bool	dot;
+	t_bool	digit;
 	size_t	digits;
 	size_t	width;
 	size_t	precision;
@@ -85,6 +85,7 @@ char			*ft_sntoa(const double nb, const size_t precision,
 					const t_bool caps);
 char			*ft_ptoa(void *ptr);
 
+void			ft_int_flagger(t_flags *flags_list, size_t strlen);
 void			ft_dash_setter(const char *s, t_flags *flags_list, int *i);
 void			ft_dash_convertor(const char *s, t_flags *flags_list, int *i);
 void			ft_zero_setter(const char *s, t_flags *flags_list, int *i);
