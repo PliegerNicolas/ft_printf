@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:30:03 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/29 11:22:50 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:41:02 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -48,7 +48,7 @@ void	ft_convertor_c(const char *s, t_flags *flags, int *i, va_list args)
 			flags->type = 'c';
 			size++;
 		}
-		str = malloc(size * sizeof(char));
+		str = malloc(size + 1 * sizeof(char));
 		if (!str)
 			return ;
 		flags->strlen = size;

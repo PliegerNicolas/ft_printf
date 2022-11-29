@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:08:41 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/29 16:17:04 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:37:54 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -87,6 +87,8 @@ void	ft_digits_convertor(t_flags *flags)
 {
 	if (!flags->digits && !flags->dot)
 		return ;
+	if (flags->type == '\0')
+		flags->max_width--;
 	ft_digits_truncat(flags);
 	ft_padding(flags);
 }

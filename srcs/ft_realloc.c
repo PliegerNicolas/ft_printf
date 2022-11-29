@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:57:04 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/29 15:12:08 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:27:35 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -23,9 +23,10 @@ void	*ft_memcpy_padded(char *dest, char *src, t_flags *flags)
 	i = 0;
 	if (src[0] == '-' && !(flags->type == 's') && flags->dot && flags->precision > flags->strlen)
 	{
-		flags->strlen--;
+		dest[0] = '-';
 		src++;
-		i++;
+		flags->strlen--;
+		flags->max_width++;
 	}
 	start = flags->max_width - flags->strlen;
 	while (start < flags->max_width)
