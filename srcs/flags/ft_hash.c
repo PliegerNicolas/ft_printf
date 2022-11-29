@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:21:20 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/22 14:45:52 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/29 10:41:30 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -17,14 +17,11 @@ void	ft_hash_setter(const char *s, t_flags *flags_list, int *i)
 	{
 		flags_list->hash = TRUE;
 		(*i)++;
+		// select right suffix to #
 	}
 }
 
-void	ft_hash_convertor(const char *s, t_flags *flags_list, int *i)
+void	ft_hash_convertor(t_flags *flags)
 {
-	if (s[*i] == '#')
-	{
-		flags_list->hash = TRUE;
-		(*i)++;
-	}
+	(void)flags;
 }

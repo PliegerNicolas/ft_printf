@@ -6,31 +6,31 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 10:23:49 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/22 14:08:05 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/29 11:36:24 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_parse_format(const char *s, va_list args, t_flags *flags_list)
+int	ft_parse_format(const char *s, va_list args, t_flags *flags)
 {
 	int		i;
 
 	i = 0;
 	while (s[i])
 	{
-		if (ft_handler_percent(s, flags_list, &i))
+		if (ft_handler_percent(s, flags, &i))
 		{
-			ft_handler_flags_setter(s, args, flags_list, &i);
-			ft_handler_args(s, args, flags_list, &i);
-			ft_handler_flags(s, flags_list, &i);
-			if (flags_list->str)
+			ft_handler_flags_setter(s, args, flags, &i);
+			ft_handler_args(s, args, flags, &i);
+			ft_handler_flags(s, flags, &i);
+			if (flags->str)
 			{
-				ft_putstrc(flags_list->str, flags_list, &i);
-				ft_next_flags(flags_list);
+				ft_putstrc(flags->str, flags, &i);
+				ft_next_flags(flags);
 			}
 		}
 		else
-			ft_putcharc(s[i++], flags_list);
+			ft_putcharc(s[i++], flags);
 	}
-	return (flags_list->tw_chars);
+	return (flags->tw_chars);
 }

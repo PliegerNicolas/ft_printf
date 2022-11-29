@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/28 11:44:55 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/29 12:30:50 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,9 @@ typedef struct s_flags
 	t_bool	blank;
 	t_bool	asterisk;
 	t_bool	dot;
-	t_bool	digit;
 	size_t	digits;
-	size_t	width;
-	size_t	extra_right_padding;
+	size_t	strlen;
+	size_t	max_width;
 	size_t	precision;
 	t_bool	hash;
 }	t_flags;
@@ -54,20 +53,17 @@ void			ft_next_flags(t_flags *flags);
 int				ft_isflag(const char c);
 int				ft_istype(const char c);
 
-void			*ft_realloc_padding(t_flags *flags_list, char padding_char);
-void			ft_realloc_int(t_flags *flags_list, size_t strlen);
+void			*ft_memsafecpy(void *dest, const void *src, size_t max_width);
+void			*ft_memcpy_padded(char *dest, char *src, t_flags *flags);
 
-int				ft_handler_percent(const char *s, t_flags *flags_list,
-					int *i);
+int				ft_handler_percent(const char *s, t_flags *flags, int *i);
 void			ft_handler_flags_setter(const char *s, va_list args,
-					t_flags *flags_list, int *i);
-void			ft_handler_flags(const char *s,
-					t_flags *flags_list, int *i);
-void			ft_handler_args(const char *s, va_list args,
-					t_flags *flags_list, int *i);
+					t_flags *flags, int *i);
+void			ft_handler_flags(const char *s, t_flags *flags, int *i);
+void			ft_handler_args(const char *s, va_list args, t_flags *flags,
+					int *i);
 
-int				ft_parse_format(const char *s, va_list args,
-					t_flags *flags_list);
+int				ft_parse_format(const char *s, va_list args, t_flags *flags);
 int				ft_putcharc(const char c, t_flags *flags_list);
 void			ft_putstrc(const char *s, t_flags *flags_list, int *i);
 void			ft_putpadding(const char c, t_flags *flags_list);
@@ -86,46 +82,45 @@ char			*ft_sntoa(const double nb, const size_t precision,
 					const t_bool caps);
 char			*ft_ptoa(void *ptr);
 
-void			ft_int_flagger(t_flags *flags_list, size_t strlen);
-void			ft_dash_setter(const char *s, t_flags *flags_list, int *i);
-void			ft_dash_convertor(const char *s, t_flags *flags_list, int *i);
-void			ft_zero_setter(const char *s, t_flags *flags_list, int *i);
-void			ft_zero_convertor(const char *s, t_flags *flags_list, int *i);
+void			ft_dash_setter(const char *s, t_flags *flags, int *i);
+void			ft_dash_convertor(t_flags *flags);
+void			ft_zero_setter(const char *s, t_flags *flags, int *i);
+void			ft_zero_convertor(t_flags *flags);
 void			ft_asterisk_setter(const char *s, va_list args,
-					t_flags *flags_list, int *i);
-void			ft_asterisk_convertor(t_flags *flags_list);
-void			ft_digits_setter(const char *s, t_flags *flags_list, int *i);
-void			ft_digits_convertor(t_flags *flags_list);
-void			ft_plus_setter(const char *s, t_flags *flags_list, int *i);
-void			ft_plus_convertor(const char *s, t_flags *flags_list, int *i);
-void			ft_blank_setter(const char *s, t_flags *flags_list, int *i);
-void			ft_blank_convertor(const char *s, t_flags *flags_list, int *i);
-void			ft_hash_setter(const char *s, t_flags *flags_list, int *i);
-void			ft_hash_convertor(const char *s, t_flags *flags_list, int *i);
+					t_flags *flags, int *i);
+void			ft_asterisk_convertor(t_flags *flags);
+void			ft_digits_setter(const char *s, t_flags *flags, int *i);
+void			ft_digits_convertor(t_flags *flags);
+void			ft_plus_setter(const char *s, t_flags *flags, int *i);
+void			ft_plus_convertor(t_flags *flags);
+void			ft_blank_setter(const char *s, t_flags *flags, int *i);
+void			ft_blank_convertor(t_flags *flags);
+void			ft_hash_setter(const char *s, t_flags *flags, int *i);
+void			ft_hash_convertor(t_flags *flags);
 
-void			ft_convertor_d(const char *s, t_flags *flags_list, int *i,
+void			ft_convertor_d(const char *s, t_flags *flags, int *i,
 					va_list args);
-void			ft_convertor_i(const char *s, t_flags *flags_list, int *i,
+void			ft_convertor_i(const char *s, t_flags *flags, int *i,
 					va_list args);
-void			ft_convertor_o(const char *s, t_flags *flags_list, int *i,
+void			ft_convertor_o(const char *s, t_flags *flags, int *i,
 					va_list args);
-void			ft_convertor_x(const char *s, t_flags *flags_list, int *i,
+void			ft_convertor_x(const char *s, t_flags *flags, int *i,
 					va_list args);
-void			ft_convertor_X(const char *s, t_flags *flags_list, int *i,
+void			ft_convertor_X(const char *s, t_flags *flags, int *i,
 					va_list args);
-void			ft_convertor_u(const char *s, t_flags *flags_list, int *i,
+void			ft_convertor_u(const char *s, t_flags *flags, int *i,
 					va_list args);
-void			ft_convertor_c(const char *s, t_flags *flags_list, int *i,
+void			ft_convertor_c(const char *s, t_flags *flags, int *i,
 					va_list args);
-void			ft_convertor_s(const char *s, t_flags *flags_list, int *i,
+void			ft_convertor_s(const char *s, t_flags *flags, int *i,
 					va_list args);
-void			ft_convertor_f(const char *s, t_flags *flags_list, int *i,
+void			ft_convertor_f(const char *s, t_flags *flags, int *i,
 					va_list args);
-void			ft_convertor_e(const char *s, t_flags *flags_list, int *i,
+void			ft_convertor_e(const char *s, t_flags *flags, int *i,
 					va_list args);
-void			ft_convertor_g(const char *s, t_flags *flags_list, int *i,
+void			ft_convertor_g(const char *s, t_flags *flags, int *i,
 					va_list args);
-void			ft_convertor_p(const char *s, t_flags *flags_list, int *i,
+void			ft_convertor_p(const char *s, t_flags *flags, int *i,
 					va_list args);
 
 #endif

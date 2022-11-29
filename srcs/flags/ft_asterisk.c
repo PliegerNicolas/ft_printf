@@ -6,18 +6,17 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:59:10 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/23 13:23:53 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/29 10:39:51 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_asterisk_setter(const char *s, va_list args, t_flags *flags_list,
-			int *i)
+void	ft_asterisk_setter(const char *s, va_list args, t_flags *flags, int *i)
 {
-	if (s[*i] == '*' && flags_list->type)
+	if (s[*i] == '*' && flags->type)
 	{
-		flags_list->asterisk = TRUE;
-		flags_list->width = va_arg(args, int);
+		flags->asterisk = TRUE;
+		flags->max_width = va_arg(args, int);
 		(*i)++;
 	}
 }
@@ -45,7 +44,7 @@ void	ft_asterisk_convertor(t_flags *flags_list)
 }
 */
 
-void	ft_asterisk_convertor(t_flags *flags_list)
+void	ft_asterisk_convertor(t_flags *flags)
 {
-	(void)flags_list;
+	(void)flags;
 }

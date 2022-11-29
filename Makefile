@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:17:44 by nplieger          #+#    #+#              #
-#    Updated: 2022/11/28 09:13:33 by nplieger         ###   ########.fr        #
+#    Updated: 2022/11/29 10:27:54 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,6 @@ SRCS			:=	ft_printf \
 					flags/ft_hash \
 					flags/ft_plus \
 					flags/ft_zero \
-					flags/ft_int_flagger \
 					types/ft_istype \
 					types/ft_convertor_d \
 					types/ft_convertor_i \
