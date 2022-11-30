@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 14:27:20 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/30 14:59:04 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:46:34 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -24,12 +24,14 @@ t_bool	ft_numeric_digits(t_flags *flags)
 
 static t_bool	ft_except_noprec_zero(t_flags *flags)
 {
-	if (!flags->digits && !flags->precision && *flags->str == '0')
+	if (!flags->precision && *flags->str == '0')
 	{
 		*flags->str = '\0';
 		flags->max_width = 0;
 		flags->precision = 0;
 		flags->strlen = 0;
+		if (flags->digits && flags->digits > flags->max_width)
+			flags->extra_right_padding = flags->digits - flags->max_width;
 		return (TRUE);
 	}
 	return (FALSE);
@@ -61,6 +63,8 @@ t_bool	ft_numeric_precision(t_flags *flags)
 		}
 		else
 			flags->max_width = abs_strlen;
+		if (flags->digits && flags->digits > flags->max_width)
+			flags->extra_right_padding = flags->digits - flags->max_width;
 	}
 	return (FALSE);
 }
