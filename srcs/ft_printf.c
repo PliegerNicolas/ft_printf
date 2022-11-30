@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 17:32:18 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/30 16:10:36 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:04:14 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -30,12 +30,19 @@ int	ft_printf(const char *format, ...)
 	return (tw_chars);
 }
 
-/*
 int	main(void)
 {
 	void	*p;
 
 	p = malloc(0);
+	// ret
+	printf("->COUNT : %d\n", printf("%030d", (int)-2147483648));
+	printf("->COUNT : %d\n", ft_printf("%030d", (int)-2147483648));
+	// ret
+	printf("->COUNT : %d\n", printf("%020d", -42000));
+	printf("->COUNT : %d\n", ft_printf("%020d", -42000));
+	printf("\n");
+
 	// ret : "w    ", return : 5 || aka max_width = 5, strlen 1, precision = 0
 	printf("->COUNT : %d\n", printf("%-5c", 'w'));
 	printf("->COUNT : %d\n", ft_printf("%-5c", 'w'));
@@ -90,4 +97,3 @@ int	main(void)
 	free(p);
 	return (0);
 }
-*/
