@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:57:04 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/30 15:35:50 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:10:12 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -44,7 +44,7 @@ void	*ft_memsafecpy(void *dest, const void *src, size_t max_width)
 	while (i < max_width)
 	{
 		if (*(unsigned char *)(src + i))
-			*(unsigned char *)(dest + i) = ' ';
+			*(unsigned char *)(dest + i) = *(unsigned char *)(src + i);
 		else
 			break ;
 		i++;
