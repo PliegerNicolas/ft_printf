@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:22:38 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/29 13:41:30 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:47:22 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -33,14 +33,11 @@ void	ft_convertor_i(const char *s, t_flags *flags, int *i, va_list args)
 		if (!str)
 			return ;
 		flags->str = str;
-		flags->strlen = ft_strlen(flags->str);
 		flags->type = 'i';
-		if (flags->dot)
-		{
-			flags->dot = FALSE;
-			flags->precision = 0;
-		}
-		if (flags->max_width < flags->strlen)
-			flags->max_width = flags->strlen;
+		flags->strlen = ft_strlen(flags->str);
+		if (ft_numeric_digits(flags))
+			return ;
+		if (ft_numeric_precision(flags))
+			return ;
 	}
 }

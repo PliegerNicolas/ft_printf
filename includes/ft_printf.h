@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:00:33 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/29 12:30:50 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:42:36 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ char			*ft_dtoa(const double nb, const size_t precision);
 char			*ft_sntoa(const double nb, const size_t precision,
 					const t_bool caps);
 char			*ft_ptoa(void *ptr);
+t_bool			ft_numeric_digits(t_flags *flags);
+t_bool			ft_numeric_precision(t_flags *flags);
 
 void			ft_dash_setter(const char *s, t_flags *flags, int *i);
 void			ft_dash_convertor(t_flags *flags);

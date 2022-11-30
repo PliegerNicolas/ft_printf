@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:08:41 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/29 16:37:54 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:44:50 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -38,7 +38,7 @@ void	ft_digits_setter(const char *s, t_flags *flags, int *i)
 	}
 }
 
-static void ft_digits_truncat(t_flags *flags)
+static void	ft_digits_truncat(t_flags *flags)
 {
 	char	*temp;
 
@@ -51,13 +51,15 @@ static void ft_digits_truncat(t_flags *flags)
 	}
 }
 
-static void	ft_fillpadding(char *str, t_flags *flags, char	paddingchar)
+static void	ft_fillpadding(char *str, t_flags *flags, char paddingchar)
 {
 	size_t		start;
 
 	if (!flags->max_width)
 		return ;
 	start = flags->max_width - flags->strlen;
+	if (str[0] == '-')
+		start++;
 	while (flags->max_width > start)
 		if (str[--flags->max_width] == '\0')
 			str[flags->max_width] = ' ';
