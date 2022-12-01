@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:17:44 by nplieger          #+#    #+#              #
-#    Updated: 2022/12/01 16:17:38 by nplieger         ###   ########.fr        #
+#    Updated: 2022/12/01 16:54:16 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRCS			:=	ft_printf \
 					utils/ft_sntoa \
 					utils/ft_putcharc \
 					utils/ft_putstrc \
-					utils/ft_addprefix_to_positive \
+					utils/ft_isnumeric \
+					utils/ft_addprefix \
 					flags/ft_isflag \
 					flags/ft_asterisk \
 					flags/ft_blank \
@@ -49,7 +50,6 @@ SRCS			:=	ft_printf \
 					flags/ft_hash \
 					flags/ft_plus \
 					flags/ft_zero \
-					flags/ft_isnumeric \
 					flags/ft_numeric \
 					types/ft_istype \
 					types/ft_convertor_d \
