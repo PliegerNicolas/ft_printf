@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:08:41 by nplieger          #+#    #+#             */
-/*   Updated: 2022/12/01 13:07:52 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/12/01 15:22:18 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -72,7 +72,8 @@ static void	ft_padding(t_flags *flags)
 {
 	char	*new_str;
 
-	new_str = malloc(flags->max_width + flags->extra_rightpadd + 1 * sizeof(char));
+	new_str = malloc(flags->max_width + flags->extra_rightpadd
+			+ 1 * sizeof(char));
 	if (!new_str)
 		return ;
 	ft_bzero(new_str, flags->max_width + flags->extra_rightpadd + 1);

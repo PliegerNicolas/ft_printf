@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 17:32:18 by nplieger          #+#    #+#             */
-/*   Updated: 2022/12/01 13:41:59 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/12/01 16:27:30 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -35,6 +35,23 @@ int	main(void)
 	void	*p;
 
 	p = malloc(0);
+	// ret : " 2147837", return : 8
+	printf("->COUNT : %d\n", printf("%   i", 2147837));
+	printf("->COUNT : %d\n", ft_printf("%   i", 2147837));
+	// ret : "+2147837", return : 8
+	printf("->COUNT : %d\n", printf("%+++i", 2147837));
+	printf("->COUNT : %d\n", ft_printf("%+++i", 2147837));
+
+	// ret : "  ", return : 2
+	printf("->COUNT : %d\n", printf("%02.0d", 0));
+	printf("->COUNT : %d\n", ft_printf("%02.0d", 0));
+	// ret : " ", return : 1
+	printf("->COUNT : %d\n", printf("%01.d", 0));
+	printf("->COUNT : %d\n", ft_printf("%01.d", 0));
+
+	// ret : "         -0000042000", return : 20
+	printf("->COUNT : %d\n", printf("%020.10d", -42000));
+	printf("->COUNT : %d\n", ft_printf("%020.10d", -42000));
 	// ret : "0000000042", return : 10
 	printf("->COUNT : %d\n", printf("%010d", 42));
 	printf("->COUNT : %d\n", ft_printf("%010d", 42));

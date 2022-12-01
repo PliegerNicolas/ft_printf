@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:45:49 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/29 11:30:38 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/12/01 16:22:18 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -32,8 +32,8 @@ void	ft_handler_flags(const char *s, t_flags *flags, int *i)
 	{
 		//ft_dash_convertor(flags);
 		//ft_zero_convertor(flags);
-		//ft_plus_convertor(flags);
-		//ft_blank_convertor(flags);
+		ft_blank_convertor(flags);
+		ft_plus_convertor(flags);
 		//ft_hash_convertor(flags);
 		//ft_asterisk_convertor(flags);
 		ft_digits_convertor(flags);
