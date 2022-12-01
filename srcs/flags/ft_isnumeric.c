@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select_paddingchar.c                            :+:      :+:    :+:   */
+/*   ft_isnumeric.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 13:31:29 by nplieger          #+#    #+#             */
-/*   Updated: 2022/12/01 12:59:30 by nplieger         ###   ########.fr       */
+/*   Created: 2022/11/12 16:22:29 by nplieger          #+#    #+#             */
+/*   Updated: 2022/12/01 09:53:19 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "ft_printf.h"
 
-char	ft_select_paddingchar(t_flags *flags)
+int	ft_isnumeric(const char c)
 {
-	char	paddingchar;
+	unsigned int	i;
 
-	if (*flags->str != '-' && flags->precision > flags->strlen)
-		paddingchar = ' ';
-	else if (flags->zero)
-		paddingchar = '0';
-	else
-		paddingchar = ' ';
-	return (paddingchar);
+	i = 0;
+	while (TYPE_NUMERIC[i])
+		if (c == TYPE_NUMERIC[i++])
+			return (1);
+	return (0);
 }

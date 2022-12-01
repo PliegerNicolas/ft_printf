@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 17:32:18 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/30 17:08:45 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:41:59 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -35,6 +35,22 @@ int	main(void)
 	void	*p;
 
 	p = malloc(0);
+	// ret : "0000000042", return : 10
+	printf("->COUNT : %d\n", printf("%010d", 42));
+	printf("->COUNT : %d\n", ft_printf("%010d", 42));
+
+	// ret : "00000000", return : 8
+	printf("->COUNT : %d\n", printf("%-1.8d", 0));
+	printf("->COUNT : %d\n", ft_printf("%-1.8d", 0));
+	// ret : "-1234", return : 5
+	printf("->COUNT : %d\n", printf("%.3d", -1234));
+	printf("->COUNT : %d\n", ft_printf("%.3d", -1234));
+	// ret : "0", return : 1
+	printf("->COUNT : %d\n", printf("%d", 0));
+	printf("->COUNT : %d\n", ft_printf("%d", 0));
+
+	printf("\n");
+
 	// ret
 	printf("->COUNT : %d\n", printf("%042.2d", 42000));
 	printf("->COUNT : %d\n", ft_printf("%042.2d", 42000));
@@ -47,6 +63,7 @@ int	main(void)
 	// ret
 	printf("->COUNT : %d\n", printf("%020d", -42000));
 	printf("->COUNT : %d\n", ft_printf("%020d", -42000));
+
 	printf("\n");
 
 	// ret : "w    ", return : 5 || aka max_width = 5, strlen 1, precision = 0
