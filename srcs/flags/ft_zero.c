@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:56:54 by nplieger          #+#    #+#             */
-/*   Updated: 2022/12/01 14:55:12 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/12/15 13:52:36 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -18,9 +18,4 @@ void	ft_zero_setter(const char *s, t_flags *flags_list, int *i)
 		flags_list->zero = TRUE;
 		(*i)++;
 	}
-}
-
-void	ft_zero_convertor(t_flags *flags)
-{
-	(void)flags;
 }

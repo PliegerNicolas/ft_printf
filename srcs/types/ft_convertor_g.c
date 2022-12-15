@@ -6,10 +6,14 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:02:04 by nplieger          #+#    #+#             */
-/*   Updated: 2022/11/29 11:17:25 by nplieger         ###   ########.fr       */
+/*   Updated: 2022/12/15 13:54:40 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+
+/*
+	G DOESN'T WORK CORRECTLY.
+*/
 
 static void	ft_g_format_selector(const double nb, t_flags *flags,
 						const char *s, int *i)
@@ -37,22 +41,6 @@ static void	ft_g_format_selector(const double nb, t_flags *flags,
 		free(str1);
 	}
 }
-
-/*
-void	ft_convertor_g(const char *s, t_flags *flags_list, int *i, va_list args)
-{
-	if (s[*i] == 'g')
-		flags_list->type = 'g';
-	if (s[*i] == 'G')
-		flags_list->type = 'G';
-	if (s[*i] == 'g' || s[*i] == 'G')
-	{
-		ft_g_format_selector(va_arg(args, double), flags_list, s, i);
-		flags_list->precision = 0;
-		flags_list->dot = FALSE;
-	}
-}
-*/
 
 void	ft_convertor_g(const char *s, t_flags *flags, int *i, va_list args)
 {
